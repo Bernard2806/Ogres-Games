@@ -1,0 +1,42 @@
+[
+  {
+    "id": "minecraft_pokemon",
+    "name": "Ogres Pokémon Craft",
+    "game": "Minecraft (Pixelmon)",
+    "ip": "mc.ogresgames.com",
+    "status": "ONLINE",
+    "version": "1.20.2 (Pixelmon 9.1.12)",
+    "players": {
+      "online": 42,
+      "max": 100
+    },
+    "description": "Embark on an epic Pokemon adventure in Minecraft! Capture wild Pokemon, challenge custom player-run gyms, trade with others, and participate in daily tournament events.",
+    "features": [
+      "Pixelmon Reforged Modpack",
+      "8 Custom Gyms & Elite Four",
+      "Survival RPG Economy",
+      "Legendary Pokémon Spawns"
+    ],
+    "discordUrl": "https://discord.gg/ogresgames"
+  },
+  {
+    "id": "discord_citadel",
+    "name": "Ogres Discord Citadel",
+    "game": "Gamer Community",
+    "ip": "discord.gg/ogresgames",
+    "status": "ACTIVE",
+    "version": "v3.5 (Ogre Bot)",
+    "players": {
+      "online": 438,
+      "max": 1500
+    },
+    "description": "The central hub for all Ogres Games players. Chat with developers, discuss strategies, find teammates, and get real-time server updates.",
+    "features": [
+      "Dev Blog & Game Previews",
+      "Looking For Group Channels",
+      "Beta Testing Invitations",
+      "Meme & Fanart Showcases"
+    ],
+    "discordUrl": "https://discord.gg/ogresgames"
+  }
+]

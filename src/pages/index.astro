@@ -1,17 +1,69 @@
 ---
-
+// index.astro
+import '../styles/global.css';
+import CrtOverlay from '../components/CrtOverlay.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Servers from '../components/Servers.astro';
+import Team from '../components/Team.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Optimization -->
+    <title>Ogres Games | Estudio de Videojuegos Retro & Comunidad Gamer</title>
+    <meta name="description" content="Estudio de desarrollo de videojuegos independientes y comunidad gamer retro oficial. Únete a nuestro servidor de Minecraft Pokémon (Pixelmon) y juega con nosotros." />
+    
+    <!-- Social Meta (OpenGraph / Twitter) -->
+    <meta property="og:title" content="Ogres Games | Videojuegos Retro & Comunidad" />
+    <meta property="og:description" content="Desarrollo de videojuegos indie con espíritu retro de los 80/90 y servidores comunitarios de Minecraft Pixelmon." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <!-- CRT monitor screen scanlines & flicker overlay effect -->
+    <CrtOverlay />
+
+    <!-- Navigation Header -->
+    <Header />
+
+    <!-- Main Content Area -->
+    <main>
+      <!-- Hero Boot Screen -->
+      <Hero />
+
+      <!-- Games Showcase -->
+      <Projects />
+
+      <!-- Server Center -->
+      <Servers />
+
+      <!-- Team RPG Profile selector -->
+      <Team />
+    </main>
+
+    <!-- Retro Console Controller Footer -->
+    <Footer />
+  </body>
 </html>
+
+<style>
+  /* Main wrapper overrides if needed */
+  main {
+    position: relative;
+    z-index: 10;
+  }
+</style>

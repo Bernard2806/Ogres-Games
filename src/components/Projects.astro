@@ -1,0 +1,267 @@
+---
+// Projects.astro
+
+const projects = [
+  {
+    id: "super_ogre_bros",
+    title: "Super Ogre World",
+    genre: "Platformer / Action",
+    engine: "Godot Engine",
+    status: "BETA TESTING",
+    release: "Q4 2026",
+    description: "Un juego de plataformas de precisión en pixel art con físicas desafiantes, niveles llenos de secretos y una banda sonora de 8 bits alucinante. ¡Ayuda a Ogre a rescatar su pantano!",
+    imageColor: "linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%)",
+    glowColor: "var(--neon-pink)",
+    tags: ["PIXEL ART", "SINGLEPLAYER", "8-BIT"]
+  },
+  {
+    id: "cyber_ogre_2099",
+    title: "Cyber Ogre 2099",
+    genre: "Retro Shoot 'em up",
+    engine: "Unity 2D",
+    status: "IN DEVELOPMENT",
+    release: "TBA",
+    description: "Desplázate a gran velocidad esquivando láseres en un shooter cyberpunk arcade de ritmo frenético. Cuenta con efectos de partículas de neon, música synthwave y jefes gigantescos.",
+    imageColor: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
+    glowColor: "var(--neon-cyan)",
+    tags: ["SYNTHWAVE", "ARCADE", "HARDCORE"]
+  },
+  {
+    id: "ogre_launcher",
+    title: "Ogres Custom Launcher",
+    genre: "Community Tools",
+    engine: "Electron / Rust",
+    status: "RELEASED (v1.2.0)",
+    release: "LIVE",
+    description: "Lanzador optimizado para ingresar a nuestros servidores oficiales de Minecraft Pokémon. Instala automáticamente la música, mods requeridos, shaders livianos y skins personalizadas.",
+    imageColor: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
+    glowColor: "var(--neon-green)",
+    tags: ["MINECRAFT", "TOOL", "AUTO-MODS"]
+  }
+];
+---
+
+<section id="projects" class="projects-section">
+  <div class="container">
+    <h2 class="section-title">NUESTROS JUEGOS</h2>
+    <p class="section-desc">Proyectos y videojuegos independientes creados con cariño retro en el estudio de Ogres Games.</p>
+    
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <div class="project-card pixel-border" style={`--glow-hover: ${project.glowColor}`}>
+          <!-- Game Cartridge Bezel -->
+          <div class="cartridge-label" style={`background: ${project.imageColor}`}>
+            <div class="cartridge-glare"></div>
+            <div class="game-screen-sim">
+              <span class="arcade-font status-stamp">{project.status}</span>
+              <div class="pixel-art-mockup">
+                <span class="game-char-pixel">👾</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Game Info -->
+          <div class="project-details">
+            <div class="project-tags">
+              {project.tags.map(tag => (
+                <span class={`tag ${project.glowColor === 'var(--neon-cyan)' ? 'tag-cyan' : project.glowColor === 'var(--neon-green)' ? 'tag-green' : 'tag-pink'}`}>{tag}</span>
+              ))}
+            </div>
+            
+            <h3 class="project-title arcade-font">{project.title}</h3>
+            
+            <div class="project-meta-grid terminal-font">
+              <div><span>GÉNERO:</span> {project.genre}</div>
+              <div><span>MOTOR:</span> {project.engine}</div>
+              <div><span>LANZAMIENTO:</span> {project.release}</div>
+            </div>
+            
+            <p class="project-description">{project.description}</p>
+            
+            <div class="project-actions">
+              <a href="#servers" class="pixel-button" style={`border-color: ${project.glowColor}; color: ${project.glowColor}; box-shadow: 0 0 5px ${project.glowColor}55;`}>
+                SABER MÁS
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: 100px 0;
+    border-top: 3px solid #141026;
+    background-color: rgba(7, 5, 14, 0.5);
+  }
+
+  .section-desc {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-top: -30px;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 40px;
+  }
+
+  .project-card {
+    background: #110d24;
+    border-color: #231c3c;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--glow-hover);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px var(--glow-hover);
+  }
+
+  /* Cartridge Label simulation */
+  .cartridge-label {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 4px solid #1c1638;
+  }
+
+  .cartridge-glare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0) 31%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transition: transform 0.5s ease;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .project-card:hover .cartridge-glare {
+    transform: translateX(0%);
+  }
+
+  .game-screen-sim {
+    width: 85%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.85);
+    border: 3px solid #141026;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .status-stamp {
+    font-size: 0.55rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 4px 6px;
+    border: 1px dashed var(--glow-hover);
+    align-self: flex-start;
+  }
+
+  .pixel-art-mockup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+
+  .game-char-pixel {
+    font-size: 3rem;
+    animation: character-bounce 1s ease infinite alternate;
+  }
+
+  @keyframes character-bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px) scaleY(0.95); }
+  }
+
+  /* Details Panel */
+  .project-details {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+
+  .project-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+
+  .project-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    font-size: 0.95rem;
+    background: rgba(0,0,0,0.3);
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border: 1px solid #1e1836;
+  }
+
+  .project-meta-grid span {
+    color: var(--color-text-muted);
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+  }
+
+  .project-actions {
+    display: flex;
+  }
+
+  .project-actions .pixel-button {
+    width: 100%;
+    font-size: 0.7rem;
+    background: transparent;
+    transition: all 0.2s ease;
+  }
+
+  .project-actions .pixel-button:hover {
+    color: #07050e !important;
+    background-color: var(--glow-hover) !important;
+    box-shadow: 0 0 15px var(--glow-hover) !important;
+  }
+</style>

@@ -1,0 +1,464 @@
+---
+// Team.astro
+import teamData from '../data/team.json';
+---
+
+<section id="team" class="team-section">
+  <div class="container">
+    <h2 class="section-title">EL EQUIPO</h2>
+    <p class="section-desc">Elige a tu campeón. Conoce a los desarrolladores, artistas y bardo de la comunidad detrás de Ogres Games.</p>
+    
+    <div class="character-select-container">
+      
+      <!-- Character Selection Grid (Left Side) -->
+      <div class="char-grid-wrapper">
+        <h3 class="char-grid-title font-arcade">AVATARS SELECT:</h3>
+        <div class="character-grid" id="char-grid">
+          {teamData.map((member, idx) => (
+            <button 
+              class={`char-portrait pixel-border ${idx === 0 ? 'selected' : ''}`}
+              data-member-id={member.id}
+              aria-label={`Select ${member.name}`}
+            >
+              <div class="portrait-container">
+                <img src={member.avatarUrl} alt={member.name} class="char-avatar" />
+              </div>
+              <div class="char-grid-name terminal-font">{member.name}</div>
+              <div class="selection-indicator"></div>
+            </button>
+          ))}
+        </div>
+      </div>
+      
+      <!-- RPG Character Stat Card (Right Side) -->
+      <div class="character-card-panel pixel-border" id="character-panel">
+        {teamData.map((member, idx) => (
+          <div 
+            class={`char-full-details ${idx === 0 ? 'active' : ''}`} 
+            id={`details-${member.id}`}
+          >
+            <!-- Header Info -->
+            <div class="char-profile-header">
+              <div class="char-profile-avatar-frame">
+                <img src={member.avatarUrl} alt={member.name} class="char-large-avatar" />
+                <span class="char-level font-arcade">LV.{member.level}</span>
+              </div>
+              
+              <div class="char-title-block">
+                <h3 class="char-name arcade-font glow-text-purple">{member.name}</h3>
+                <span class="char-class tag tag-purple">{member.class}</span>
+              </div>
+            </div>
+            
+            <div class="divider-line"></div>
+            
+            <!-- RPG Stats Section -->
+            <div class="char-rpg-stats">
+              <h4 class="stats-label font-arcade">STATS:</h4>
+              <div class="stats-bars">
+                
+                {Object.entries(member.stats).map(([statName, val]) => (
+                  <div class="stat-row">
+                    <span class="stat-name terminal-font">{statName.toUpperCase()}</span>
+                    <div class="stat-bar-container">
+                      <div 
+                        class={`stat-bar-fill ${statName === 'HP' ? 'bg-red' : statName === 'MP' ? 'bg-blue' : 'bg-green'}`} 
+                        style={`width: ${val}%`}
+                      ></div>
+                    </div>
+                    <span class="stat-val terminal-font">{val}/100</span>
+                  </div>
+                ))}
+                
+              </div>
+            </div>
+            
+            <div class="divider-line"></div>
+            
+            <!-- Character Description -->
+            <div class="char-lore">
+              <h4 class="stats-label font-arcade">DESCRIPCIÓN:</h4>
+              <p class="lore-text">{member.description}</p>
+            </div>
+            
+            <div class="divider-line"></div>
+            
+            <!-- Social buttons -->
+            <div class="char-socials">
+              <h4 class="stats-label font-arcade">CONTACTO:</h4>
+              <div class="social-icons">
+                {member.socials.github && (
+                  <a href={member.socials.github} target="_blank" rel="noopener noreferrer" class="pixel-button" title="GitHub">
+                    🐙 GitHub
+                  </a>
+                )}
+                {member.socials.discord && (
+                  <button class="pixel-button pixel-button-purple copy-discord-btn" data-discord={member.socials.discord} title="Copy Discord Tag">
+                    💬 Discord: {member.socials.discord}
+                  </button>
+                )}
+                {member.socials.twitter && (
+                  <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-cyan" title="Twitter / X">
+                    🐦 Twitter
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  // Character Select Logic
+  const portraits = document.querySelectorAll('.char-portrait');
+  const detailsPanels = document.querySelectorAll('.char-full-details');
+  
+  portraits.forEach(portrait => {
+    // We trigger character switch on hover OR click for fluid experience
+    const triggerSelection = () => {
+      const memberId = portrait.getAttribute('data-member-id');
+      
+      // De-select all portraits
+      portraits.forEach(p => p.classList.remove('selected'));
+      
+      // Select clicked portrait
+      portrait.classList.add('selected');
+      
+      // Hide all details panels
+      detailsPanels.forEach(panel => panel.classList.remove('active'));
+      
+      // Show corresponding details panel
+      const targetPanel = document.getElementById(`details-${memberId}`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+    };
+
+    portrait.addEventListener('click', triggerSelection);
+    portrait.addEventListener('mouseenter', triggerSelection);
+  });
+
+  // Copy Discord tag functionality
+  const copyDiscordBtns = document.querySelectorAll('.copy-discord-btn');
+  copyDiscordBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Avoid triggering parent switch
+      const tag = btn.getAttribute('data-discord');
+      if (tag) {
+        navigator.clipboard.writeText(tag).then(() => {
+          const originalText = btn.textContent;
+          btn.textContent = "¡COPIADO!";
+          setTimeout(() => {
+            btn.textContent = originalText;
+          }, 2000);
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .team-section {
+    padding: 100px 0;
+    background-color: rgba(7, 5, 14, 0.4);
+    border-top: 3px solid #141026;
+  }
+
+  .character-select-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  /* Grid Panel (Avatars) */
+  .char-grid-wrapper {
+    background: rgba(16, 12, 30, 0.5);
+    border: 3px solid #231c3c;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .char-grid-title {
+    font-size: 0.7rem;
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan-glow);
+    border-bottom: 2px dashed #231c3c;
+    padding-bottom: 12px;
+  }
+
+  .character-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 20px;
+  }
+
+  .char-portrait {
+    background: #141026;
+    border-color: #322852;
+    padding: 15px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .portrait-container {
+    width: 75px;
+    height: 75px;
+    background: #090612;
+    border: 2px solid #231c3c;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .char-avatar {
+    width: 90%;
+    height: auto;
+    image-rendering: pixelated;
+    transition: transform 0.2s ease;
+  }
+
+  .char-grid-name {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  /* Selected Portrait state */
+  .char-portrait.selected {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 15px var(--neon-purple-glow);
+    background: #1e1836;
+  }
+
+  .char-portrait.selected .portrait-container {
+    border-color: var(--neon-purple);
+  }
+
+  .char-portrait.selected .char-avatar {
+    transform: scale(1.08);
+  }
+
+  .char-portrait.selected .char-grid-name {
+    color: #fff;
+    text-shadow: 0 0 5px var(--neon-purple-glow);
+  }
+
+  .selection-indicator {
+    display: none;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 6px;
+    height: 6px;
+    background-color: var(--neon-purple);
+    box-shadow: 0 0 5px var(--neon-purple);
+  }
+
+  .char-portrait.selected .selection-indicator {
+    display: block;
+  }
+
+  /* RPG Card Display (Right Panel) */
+  .character-card-panel {
+    background: var(--color-panel-bg);
+    border-color: #231c3c;
+    padding: 35px;
+    min-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .char-full-details {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .char-full-details.active {
+    display: flex;
+    animation: panel-fade-in 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  @keyframes panel-fade-in {
+    from { opacity: 0; transform: scale(0.97) translateX(10px); }
+    to { opacity: 1; transform: scale(1) translateX(0); }
+  }
+
+  .char-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .char-profile-avatar-frame {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: #090612;
+    border: 3px solid var(--neon-purple);
+    box-shadow: 0 0 10px var(--neon-purple-glow);
+    padding: 5px;
+  }
+
+  .char-large-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
+  }
+
+  .char-level {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--neon-purple);
+    color: #fff;
+    font-size: 0.55rem;
+    padding: 2px 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  }
+
+  .char-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .char-name {
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .divider-line {
+    height: 2px;
+    background: linear-gradient(90deg, #231c3c 0%, rgba(35, 28, 60, 0) 100%);
+  }
+
+  .stats-label {
+    font-size: 0.65rem;
+    color: var(--neon-cyan);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+
+  .stats-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .stat-name {
+    width: 70px;
+    font-size: 1.05rem;
+    color: var(--color-text-muted);
+  }
+
+  .stat-bar-container {
+    flex-grow: 1;
+    height: 12px;
+    background-color: #0d0a1c;
+    border: 1px solid #231c3c;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  .stat-bar-fill {
+    height: 100%;
+    transition: width 0.5s ease-out;
+  }
+
+  .bg-red {
+    background-color: #ff0055;
+    box-shadow: 0 0 8px rgba(255, 0, 85, 0.6);
+  }
+
+  .bg-blue {
+    background-color: var(--neon-cyan);
+    box-shadow: 0 0 8px var(--neon-cyan-glow);
+  }
+
+  .bg-green {
+    background-color: var(--neon-green);
+    box-shadow: 0 0 8px var(--neon-green-glow);
+  }
+
+  .stat-val {
+    width: 60px;
+    text-align: right;
+    font-size: 1.05rem;
+  }
+
+  /* Lore text */
+  .lore-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+
+  /* Social Links in Stat Card */
+  .social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .social-icons .pixel-button {
+    font-size: 0.65rem;
+    padding: 8px 16px;
+  }
+
+  @media (max-width: 900px) {
+    .character-select-container {
+      grid-template-columns: 1fr;
+    }
+    
+    .character-card-panel {
+      min-height: auto;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .character-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .char-profile-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+    .social-icons {
+      flex-direction: column;
+      width: 100%;
+    }
+    .social-icons .pixel-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

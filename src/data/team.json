@@ -1,0 +1,59 @@
+[
+  {
+    "id": "bernard",
+    "name": "Bernard",
+    "class": "Code Archmage",
+    "avatarUrl": "https://api.dicebear.com/7.x/pixel-art/svg?seed=bernard&backgroundColor=0c0914",
+    "level": 99,
+    "description": "Founding developer of Ogres Games. Casts compiler spells and debugs servers in his sleep. Enjoys optimization and coffee.",
+    "stats": {
+      "HP": 95,
+      "MP": 99,
+      "SPD": 80,
+      "Coding": 100
+    },
+    "socials": {
+      "github": "https://github.com/Bernard2806",
+      "discord": "bernard#0000",
+      "twitter": "https://twitter.com/OgresGames"
+    }
+  },
+  {
+    "id": "pixel_ogre",
+    "name": "Kaelen",
+    "class": "Pixel Alchemist",
+    "avatarUrl": "https://api.dicebear.com/7.x/pixel-art/svg?seed=kaelen&backgroundColor=0c0914",
+    "level": 82,
+    "description": "Transmutes blank canvases into vibrant pixel-art assets and smooth 2D animations. Keeps the retro spirit alive.",
+    "stats": {
+      "HP": 80,
+      "MP": 92,
+      "SPD": 85,
+      "Design": 95
+    },
+    "socials": {
+      "github": "",
+      "discord": "kaelen#0000",
+      "twitter": "https://twitter.com/KaelenArt"
+    }
+  },
+  {
+    "id": "community_bard",
+    "name": "Luna",
+    "class": "Community Bard",
+    "avatarUrl": "https://api.dicebear.com/7.x/pixel-art/svg?seed=luna&backgroundColor=0c0914",
+    "level": 75,
+    "description": "Manages server rules, hosts community gaming events, and coordinates the official Pokemon Gyms. Keeps the crowd hyped.",
+    "stats": {
+      "HP": 90,
+      "MP": 75,
+      "SPD": 95,
+      "Hype": 99
+    },
+    "socials": {
+      "github": "",
+      "discord": "luna_ogres",
+      "twitter": ""
+    }
+  }
+]

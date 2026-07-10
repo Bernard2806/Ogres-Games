@@ -1,0 +1,496 @@
+---
+// Servers.astro
+import serversData from '../data/servers.json';
+---
+
+<section id="servers" class="servers-section">
+  <div class="container">
+    <h2 class="section-title">SERVIDORES OFICIALES</h2>
+    <p class="section-desc">Únete a nuestra comunidad gamer. Servidores dedicados con soporte 24/7 y contenido personalizado.</p>
+    
+    <div class="servers-dashboard">
+      
+      <!-- Left column: Servers list -->
+      <div class="servers-list">
+        {serversData.map((server) => (
+          <div class="server-node pixel-border" data-server-ip={server.ip}>
+            <div class="server-node-header">
+              <span class="game-tag tag tag-cyan">{server.game}</span>
+              <div class="status-indicator">
+                <span class={`status-led ${server.status.toLowerCase() === 'online' || server.status.toLowerCase() === 'active' ? 'led-online' : 'led-offline'}`}></span>
+                <span class="status-text terminal-font">{server.status}</span>
+              </div>
+            </div>
+            
+            <h3 class="server-name arcade-font">{server.name}</h3>
+            <p class="server-desc">{server.description}</p>
+            
+            <div class="server-meta-grid terminal-font">
+              <div class="meta-item">
+                <span class="label">VERSION:</span>
+                <span class="value">{server.version}</span>
+              </div>
+              <div class="meta-item">
+                <span class="label">PLAYERS:</span>
+                <span class="value">{server.players.online} / {server.players.max}</span>
+              </div>
+              <div class="meta-item-full">
+                <span class="label">DIRECCIÓN IP:</span>
+                <span class="value highlight-ip clickable-ip" data-ip={server.ip} title="Click para copiar IP">
+                  {server.ip}
+                  <span class="copy-hint font-arcade">[COPIAR]</span>
+                </span>
+              </div>
+            </div>
+            
+            <div class="server-key-features">
+              <h4 class="features-title font-arcade">CARACTERÍSTICAS:</h4>
+              <ul class="features-list">
+                {server.features.map(feat => (
+                  <li class="feature-item">⭐ {feat}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="server-actions">
+              <button class="pixel-button pixel-button-green copy-ip-btn" data-ip={server.ip}>
+                📋 COPIAR IP
+              </button>
+              <a href={server.discordUrl} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-purple">
+                💬 UNIRSE AL DISCORD
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Right column: Simulated Live Server Console Logs -->
+      <div class="live-console pixel-border">
+        <div class="console-head">
+          <span class="led-red"></span>
+          <span class="console-title font-arcade">LIVE LOGS: OGRES_TELEMETRY.LOG</span>
+        </div>
+        <div class="console-screen" id="live-server-logs">
+          <!-- Terminal logs printed by JS -->
+          <div class="log-entry line-system">[03:00:01] [SYSTEM] Telemetry link online. Listening on port 25565...</div>
+          <div class="log-entry line-success">[03:00:02] [SUCCESS] Minecraft Pokemon core initialized. TPS: 20.0.</div>
+          <div class="log-entry line-info">[03:00:15] [INFO] Trainer Oak challenged Gym Leader Bernardo.</div>
+          <div class="log-entry line-join">[03:01:42] [JOIN] Jugador Ogre_Master#342 se ha unido al servidor.</div>
+          <div class="log-entry line-pokemon">[03:03:10] [POKEMON] ¡Un Mewtwo salvaje ha aparecido en el área de eventos!</div>
+          <div class="log-entry line-system">[03:04:12] [SYSTEM] Salvando mapa automático... Completado.</div>
+        </div>
+        <div class="clipboard-toast font-arcade" id="clipboard-toast">
+          ¡IP COPIADA AL PORTAPAPELES!
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<script>
+  // Clipboard copying mechanism
+  const copyButtons = document.querySelectorAll('.copy-ip-btn');
+  const clickableIps = document.querySelectorAll('.clickable-ip');
+  const toast = document.getElementById('clipboard-toast');
+
+  function copyIpToClipboard(ipText: string) {
+    navigator.clipboard.writeText(ipText).then(() => {
+      // Show Toast Notification
+      if (toast) {
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      }
+      
+      // Also post a simulated log entry about copy action
+      addLogEntry('SUCCESS', `IP copiada al portapapeles: ${ipText}`);
+    }).catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+  }
+
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ip = btn.getAttribute('data-ip');
+      if (ip) copyIpToClipboard(ip);
+    });
+  });
+
+  clickableIps.forEach(ipSpan => {
+    ipSpan.addEventListener('click', () => {
+      const ip = ipSpan.getAttribute('data-ip');
+      if (ip) copyIpToClipboard(ip);
+    });
+  });
+
+  // Simulated Live Server Event Logs
+  const logScreen = document.getElementById('live-server-logs');
+  const trainers = ["Ash", "Misty", "Brock", "Gary", "Red", "Blue", "Satoshi", "Serena", "Cynthia", "Steven"];
+  const pokemons = ["Charizard Gigamax", "Pikachu shiny", "Rayquaza", "Gyarados", "Eevee", "Lucario", "Gengar", "Dragonite"];
+  const areas = ["el Bosque Viridian", "la Ruta de Batalla", "el Coliseo Ogros", "el Centro Pokémon", "la Zona Safari"];
+  const gymLeaders = ["Bernardo", "Ogre Wizard", "Kaelen", "Luna", "Pixel Master"];
+
+  function getTimestamp() {
+    const now = new Date();
+    const hrs = String(now.getHours()).padStart(2, '0');
+    const mins = String(now.getMinutes()).padStart(2, '0');
+    const secs = String(now.getSeconds()).padStart(2, '0');
+    return `[${hrs}:${mins}:${secs}]`;
+  }
+
+  function addLogEntry(type: string, message: string) {
+    if (!logScreen) return;
+    
+    const entry = document.createElement('div');
+    entry.className = `log-entry line-${type.toLowerCase()}`;
+    entry.textContent = `${getTimestamp()} [${type}] ${message}`;
+    
+    logScreen.appendChild(entry);
+    
+    // Auto-scroll to bottom
+    logScreen.scrollTop = logScreen.scrollHeight;
+    
+    // Prune old logs if there are too many
+    const entries = logScreen.querySelectorAll('.log-entry');
+    if (entries.length > 25) {
+      entries[0].remove();
+    }
+  }
+
+  function simulateLog() {
+    const rand = Math.random();
+    
+    if (rand < 0.25) {
+      // Player Join log
+      const name = trainers[Math.floor(Math.random() * trainers.length)] + "_" + Math.floor(Math.random() * 99);
+      addLogEntry('JOIN', `El entrenador ${name} ingresó al servidor Pokémon.`);
+    } else if (rand < 0.50) {
+      // Pokémon Wild Spawn log
+      const poke = pokemons[Math.floor(Math.random() * pokemons.length)];
+      const area = areas[Math.floor(Math.random() * areas.length)];
+      addLogEntry('POKEMON', `¡Un ${poke} salvaje avistado en ${area}!`);
+    } else if (rand < 0.70) {
+      // Battle/Gym Challenge log
+      const trainer = trainers[Math.floor(Math.random() * trainers.length)];
+      const leader = gymLeaders[Math.floor(Math.random() * gymLeaders.length)];
+      addLogEntry('INFO', `${trainer} está retando al Líder de Gimnasio ${leader}.`);
+    } else if (rand < 0.85) {
+      // System Telemetry log
+      const tps = (19.5 + Math.random() * 0.5).toFixed(1);
+      addLogEntry('SYSTEM', `FPS/TPS Check: OK. Server Tick Rate: ${tps} TPS.`);
+    } else {
+      // General trade/chat log
+      const t1 = trainers[Math.floor(Math.random() * trainers.length)];
+      const t2 = trainers[Math.floor(Math.random() * trainers.length)];
+      if (t1 !== t2) {
+        addLogEntry('INFO', `${t1} completó un intercambio Pokémon con ${t2}.`);
+      }
+    }
+    
+    // Schedule next random log
+    const nextLogDelay = 4000 + Math.random() * 6000;
+    setTimeout(simulateLog, nextLogDelay);
+  }
+
+  // Start log simulation
+  setTimeout(simulateLog, 2000);
+</script>
+
+<style>
+  .servers-section {
+    padding: 100px 0;
+    border-top: 3px solid #141026;
+    background-color: #07050e;
+  }
+
+  .servers-dashboard {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+
+  .servers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .server-node {
+    background-color: var(--color-panel-bg);
+    border-color: #231c3c;
+    padding: 30px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .server-node:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px var(--neon-cyan-glow);
+  }
+
+  .server-node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .status-led {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .led-online {
+    background-color: var(--neon-green);
+    box-shadow: 0 0 10px var(--neon-green);
+    animation: led-blink 1.5s infinite alternate;
+  }
+
+  .led-offline {
+    background-color: #ff0055;
+    box-shadow: 0 0 10px #ff0055;
+  }
+
+  @keyframes led-blink {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  .status-text {
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .server-name {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .server-desc {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .server-meta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #1c1638;
+    margin-bottom: 25px;
+  }
+
+  .meta-item, .meta-item-full {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .meta-item-full {
+    grid-column: span 2;
+    border-top: 1px dashed #231c3c;
+    padding-top: 12px;
+    margin-top: 5px;
+  }
+
+  .server-meta-grid .label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+
+  .server-meta-grid .value {
+    font-size: 1.2rem;
+    color: #fff;
+  }
+
+  .highlight-ip {
+    color: var(--neon-cyan) !important;
+    text-shadow: 0 0 5px var(--neon-cyan-glow);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+  }
+
+  .clickable-ip {
+    cursor: pointer;
+    transition: transform 0.1s ease;
+  }
+
+  .clickable-ip:hover {
+    transform: scale(1.02);
+  }
+
+  .copy-hint {
+    font-size: 0.55rem;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-text-muted);
+    padding: 2px 5px;
+    margin-left: 5px;
+    transition: all 0.15s ease;
+  }
+
+  .clickable-ip:hover .copy-hint {
+    color: var(--neon-green);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 5px var(--neon-green-glow);
+  }
+
+  /* Features */
+  .server-key-features {
+    margin-bottom: 25px;
+  }
+
+  .features-title {
+    font-size: 0.7rem;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .features-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .feature-item {
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+
+  /* Actions */
+  .server-actions {
+    display: flex;
+    gap: 20px;
+  }
+
+  .server-actions .pixel-button {
+    flex: 1;
+    font-size: 0.75rem;
+  }
+
+  /* Live Terminal Console logs */
+  .live-console {
+    background-color: #040209;
+    border-color: #231c3c;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .console-head {
+    background-color: #0f0a1c;
+    border-bottom: 3px solid #231c3c;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .led-red {
+    width: 10px;
+    height: 10px;
+    background-color: #ff0055;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff0055;
+    animation: led-blink 1s infinite alternate;
+  }
+
+  .console-title {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+  }
+
+  .console-screen {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+    font-family: var(--font-terminal);
+    font-size: 1.15rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+  }
+
+  .log-entry {
+    word-break: break-all;
+  }
+
+  /* Log coloring rules */
+  .line-system { color: var(--color-text-muted); }
+  .line-info { color: var(--neon-cyan); text-shadow: 0 0 2px var(--neon-cyan-glow); }
+  .line-join { color: var(--neon-purple); text-shadow: 0 0 2px var(--neon-purple-glow); }
+  .line-pokemon { color: var(--neon-pink); text-shadow: 0 0 3px var(--neon-pink-glow); }
+  .line-success { color: var(--neon-green); text-shadow: 0 0 3px var(--neon-green-glow); }
+
+  /* Toast Notification */
+  .clipboard-toast {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(50px);
+    background: #0f0a1c;
+    color: var(--neon-green);
+    border: 2px solid var(--neon-green);
+    box-shadow: 0 0 15px var(--neon-green-glow);
+    padding: 12px 24px;
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  .clipboard-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  @media (max-width: 992px) {
+    .servers-dashboard {
+      grid-template-columns: 1fr;
+    }
+    
+    .live-console {
+      min-height: 350px;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .server-meta-grid {
+      grid-template-columns: 1fr;
+    }
+    .meta-item-full {
+      grid-column: span 1;
+    }
+    .features-list {
+      grid-template-columns: 1fr;
+    }
+    .server-actions {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+</style>
