@@ -26,11 +26,11 @@ import logoImg from '../assets/images/Logo-OG.png';
       <a href="#team" class="nav-link arcade-font">EQUIPO</a>
       <a href="#donations" class="nav-link arcade-font">DONAR</a>
       
-      <!-- CRT Controller Switch -->
-      <button class="crt-toggle-btn" id="crt-toggle" aria-label="Toggle CRT Scanline Effect">
+      <!-- CRT Status Indicator -->
+      <div class="crt-status-indicator">
         <span class="led"></span>
-        <span class="btn-text">CRT FILTER: <span id="crt-state-text">ON</span></span>
-      </button>
+        <span class="btn-text">CRT FILTER: ON</span>
+      </div>
     </nav>
   </div>
 </header>
@@ -53,37 +53,6 @@ import logoImg from '../assets/images/Logo-OG.png';
       navMenu?.classList.remove('active');
     });
   });
-
-  // CRT switch behavior
-  const crtToggle = document.getElementById('crt-toggle');
-  const crtStateText = document.getElementById('crt-state-text');
-  
-  crtToggle?.addEventListener('click', () => {
-    // Fire the custom event handled by CrtOverlay
-    window.dispatchEvent(new CustomEvent('toggle-crt'));
-  });
-
-  // Handle CRT status changes to keep the text & indicator in sync
-  window.addEventListener('crt-status-changed', (e: any) => {
-    const active = e.detail.active;
-    if (crtStateText) {
-      crtStateText.textContent = active ? 'ON' : 'OFF';
-    }
-    if (crtToggle) {
-      if (active) {
-        crtToggle.classList.add('active');
-      } else {
-        crtToggle.classList.remove('active');
-      }
-    }
-  });
-
-  // Initial Sync from body class
-  setTimeout(() => {
-    const isActive = document.body.classList.contains('crt-active');
-    if (crtStateText) crtStateText.textContent = isActive ? 'ON' : 'OFF';
-    if (crtToggle && isActive) crtToggle.classList.add('active');
-  }, 100);
 </script>
 
 <style>
@@ -169,8 +138,8 @@ import logoImg from '../assets/images/Logo-OG.png';
     width: 100%;
   }
 
-  /* CRT Toggle Switch Styling */
-  .crt-toggle-btn {
+  /* CRT Status Indicator Styling */
+  .crt-status-indicator {
     background: #141026;
     border: 2px solid var(--neon-purple);
     border-radius: 0;
@@ -178,31 +147,18 @@ import logoImg from '../assets/images/Logo-OG.png';
     font-family: var(--font-arcade);
     font-size: 0.65rem;
     padding: 8px 16px;
-    cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 8px;
     box-shadow: 0 0 5px var(--neon-purple-glow);
-    transition: all 0.15s ease-in-out;
   }
 
-  .crt-toggle-btn:hover {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 10px var(--neon-cyan-glow);
-  }
-
-  .crt-toggle-btn .led {
+  .crt-status-indicator .led {
     width: 8px;
     height: 8px;
-    background-color: #ff0055;
-    box-shadow: 0 0 5px #ff0055;
-    border-radius: 50%;
-    transition: background-color 0.15s ease;
-  }
-
-  .crt-toggle-btn.active .led {
     background-color: var(--neon-green);
     box-shadow: 0 0 8px var(--neon-green);
+    border-radius: 50%;
   }
 
   /* Mobile menu button styles */

@@ -6,33 +6,9 @@
 <div class="crt-vignette" id="crt-vignette"></div>
 
 <script>
-  // Initialize CRT effect based on localStorage or default to active
-  const body = document.body;
+  document.body.classList.add('crt-active');
   const vignette = document.getElementById('crt-vignette');
-  
-  const savedCrt = localStorage.getItem('crt-effect');
-  const isCrtActive = savedCrt === null ? true : savedCrt === 'true';
-
-  if (isCrtActive) {
-    body.classList.add('crt-active');
-    if (vignette) vignette.style.display = 'block';
-  } else {
-    body.classList.remove('crt-active');
-    if (vignette) vignette.style.display = 'none';
-  }
-
-  // Listen to custom toggle events from Header or other controls
-  window.addEventListener('toggle-crt', () => {
-    const active = body.classList.toggle('crt-active');
-    localStorage.setItem('crt-effect', active.toString());
-    
-    if (vignette) {
-      vignette.style.display = active ? 'block' : 'none';
-    }
-    
-    // Dispatch a status event so toggle buttons can update their visual state
-    window.dispatchEvent(new CustomEvent('crt-status-changed', { detail: { active } }));
-  });
+  if (vignette) vignette.style.display = 'block';
 </script>
 
 <style>
