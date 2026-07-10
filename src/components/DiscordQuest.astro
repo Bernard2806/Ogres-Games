@@ -1,0 +1,302 @@
+---
+// DiscordQuest.astro
+import configData from '../data/config.json';
+---
+
+<section id="discord-quest" class="discord-quest-section">
+  <div class="container">
+    
+    <!-- Quest Panel Bezel -->
+    <div class="quest-board pixel-border">
+      
+      <!-- Quest Bezel Header -->
+      <div class="quest-header font-arcade">
+        <span class="quest-led glow-led"></span>
+        <span class="quest-title-text glow-text-purple">MISION ACTIVA: UNIRSE AL DISCORD</span>
+        <span class="quest-led glow-led"></span>
+      </div>
+      
+      <div class="quest-body">
+        <!-- NPC / Quest Giver Column -->
+        <div class="quest-giver-column">
+          <div class="quest-giver-portrait pixel-border">
+            <div class="pixel-avatar-container">
+              <!-- Animated Pixel Discord Logo / Character -->
+              <span class="discord-char">👾</span>
+            </div>
+            <div class="quest-giver-name terminal-font">Discord Bot</div>
+          </div>
+          <div class="server-telemetry-badge terminal-font">
+            <span class="dot-online"></span>
+            <span class="stats-num">438 / 1,500</span> ONLINE
+          </div>
+        </div>
+        
+        <!-- Quest Details & Rewards Column -->
+        <div class="quest-details-column">
+          <div class="quest-description">
+            <h3 class="arcade-font quest-subtitle">¿ACEPTAS EL RETO?</h3>
+            <p>Únete a nuestra central de operaciones. La comunidad gamer de Ogres Games se reúne en Discord para charlar con desarrolladores, debatir estrategias y organizar el servidor oficial de Minecraft Pokémon (Pixelmon).</p>
+          </div>
+          
+          <div class="quest-rewards-panel">
+            <h4 class="font-arcade rewards-header">RECOMPENSAS DE MISIÓN:</h4>
+            <ul class="rewards-list">
+              {configData.discordRewards.map(reward => (
+                <li class="reward-item">
+                  <span class="chest-icon">🎁</span>
+                  <span class="reward-text">{reward}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Quest Footer / Accept CTA -->
+      <div class="quest-footer">
+        <a 
+          href={configData.discordUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="pixel-button pixel-button-pink quest-btn font-arcade glow-btn"
+        >
+          🎮 ACEPTAR MISIÓN (UNIRSE AL DISCORD)
+        </a>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<style>
+  .discord-quest-section {
+    padding: 60px 0;
+    background-color: #07050e;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Retro Quest Board Bezel */
+  .quest-board {
+    background-color: rgba(16, 12, 30, 0.9);
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 25px rgba(188, 19, 254, 0.4), inset 0 0 10px rgba(188, 19, 254, 0.2);
+    border-radius: 4px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .quest-header {
+    background-color: #0c0918;
+    border-bottom: 2px dashed var(--neon-purple);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+
+  .quest-title-text {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+  }
+
+  .quest-led {
+    width: 10px;
+    height: 10px;
+    background-color: var(--neon-purple);
+    border-radius: 50%;
+  }
+
+  .glow-led {
+    box-shadow: 0 0 10px var(--neon-purple), 0 0 3px var(--neon-purple);
+    animation: led-glow-pulse 1s infinite alternate;
+  }
+
+  @keyframes led-glow-pulse {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  /* Body columns layout */
+  .quest-body {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 40px;
+  }
+
+  /* Giver portrait */
+  .quest-giver-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .quest-giver-portrait {
+    width: 140px;
+    height: 140px;
+    background-color: #0c0918;
+    border-color: #231c3c;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .pixel-avatar-container {
+    width: 80px;
+    height: 80px;
+    background-color: #141026;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    position: relative;
+    border: 2px solid var(--neon-cyan);
+  }
+
+  .discord-char {
+    font-size: 3rem;
+    animation: char-bounce 2s ease infinite alternate;
+  }
+
+  @keyframes char-bounce {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-8px) scale(1.03); }
+  }
+
+  .quest-giver-name {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+  }
+
+  .server-telemetry-badge {
+    background-color: #0c0918;
+    border: 1px solid #231c3c;
+    padding: 8px 16px;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-muted);
+  }
+
+  .dot-online {
+    width: 8px;
+    height: 8px;
+    background-color: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--neon-green);
+    animation: led-glow-pulse 1.5s infinite alternate;
+  }
+
+  .stats-num {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  /* Details and rewards */
+  .quest-details-column {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .quest-subtitle {
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+
+  .quest-description p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .quest-rewards-panel {
+    background-color: #0c0918;
+    border: 2px solid #231c3c;
+    padding: 20px;
+  }
+
+  .rewards-header {
+    font-size: 0.65rem;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 5px var(--neon-yellow-glow);
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed #231c3c;
+    padding-bottom: 8px;
+  }
+
+  .rewards-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .reward-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--color-text);
+  }
+
+  .chest-icon {
+    font-size: 1.2rem;
+    animation: chest-wobble 3s ease infinite;
+  }
+
+  @keyframes chest-wobble {
+    0%, 90%, 100% { transform: rotate(0); }
+    93% { transform: rotate(-8deg) scale(1.1); }
+    96% { transform: rotate(8deg) scale(1.1); }
+  }
+
+  /* Quest Footer button */
+  .quest-footer {
+    display: flex;
+    justify-content: center;
+    border-top: 2px dashed var(--neon-purple);
+    padding-top: 25px;
+  }
+
+  .quest-btn {
+    font-size: 0.9rem;
+    padding: 18px 36px;
+    width: 100%;
+    max-width: 600px;
+    border-color: var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 10px var(--neon-pink-glow);
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .quest-btn:hover {
+    background-color: var(--neon-pink);
+    color: #07050e;
+    box-shadow: 0 0 25px var(--neon-pink), 0 0 5px var(--neon-pink);
+  }
+
+  @media (max-width: 900px) {
+    .quest-body {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+</style>

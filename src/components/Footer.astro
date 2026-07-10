@@ -1,5 +1,6 @@
 ---
 // Footer.astro
+import configData from '../data/config.json';
 ---
 
 <footer class="retro-footer">
@@ -44,7 +45,7 @@
         </div>
         
         <div class="gameboy-buttons">
-          <a href="https://discord.gg/ogresgames" target="_blank" rel="noopener noreferrer" class="gameboy-btn btn-a" title="Discord">
+          <a href={configData.discordUrl} target="_blank" rel="noopener noreferrer" class="gameboy-btn btn-a" title="Discord">
             <span class="label font-arcade">A</span>
             <span class="tooltip font-arcade">DISCORD</span>
           </a>
