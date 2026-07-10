@@ -64,13 +64,7 @@ Para adaptar esta landing a tu comunidad:
 4. **Edita `src/data/shop.json`** — Productos de tu tienda (rangos VIP, monedas, etc.)
 5. **Reemplaza el logo** en `src/assets/images/Logo-OG.png` y los avatares en `public/avatars/`
 
----
 
-## 🌐 Enlaces Oficiales
-
-- **Servidor Minecraft**: `mc.ogresgames.com`
-- **Discord**: [discord.gg/ogresgames](https://discord.gg/ogresgames)
-- **Donaciones**: [store.ogresgames.com](https://store.ogresgames.com)
 
 ---
 
