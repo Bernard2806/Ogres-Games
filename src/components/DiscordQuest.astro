@@ -10,7 +10,7 @@ import configData from '../data/config.json';
     <div class="quest-board pixel-border">
       
       <!-- Quest Bezel Header -->
-      <div class="quest-header font-arcade">
+      <div class="quest-header arcade-font">
         <span class="quest-led glow-led"></span>
         <span class="quest-title-text glow-text-purple">NUESTRA COMUNIDAD DE DISCORD</span>
         <span class="quest-led glow-led"></span>
@@ -40,7 +40,7 @@ import configData from '../data/config.json';
           </div>
           
           <div class="quest-rewards-panel">
-            <h4 class="font-arcade rewards-header">BENEFICIOS DE UNIRSE:</h4>
+            <h4 class="arcade-font rewards-header">BENEFICIOS DE UNIRSE:</h4>
             <ul class="rewards-list">
               {configData.discordRewards.map(reward => (
                 <li class="reward-item">
@@ -60,7 +60,7 @@ import configData from '../data/config.json';
           href={configData.discordUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="pixel-button pixel-button-pink quest-btn font-arcade glow-btn"
+          class="pixel-button pixel-button-pink quest-btn arcade-font glow-btn"
         >
           🎮 UNIRSE AL DISCORD OFICIAL
         </a>

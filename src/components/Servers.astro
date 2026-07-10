@@ -38,13 +38,13 @@ import serversData from '../data/servers.json';
                 <span class="label">DIRECCIÓN IP:</span>
                 <span class="value highlight-ip clickable-ip" data-ip={server.ip} title="Click para copiar IP">
                   {server.ip}
-                  <span class="copy-hint font-arcade">[COPIAR]</span>
+                  <span class="copy-hint arcade-font">[COPIAR]</span>
                 </span>
               </div>
             </div>
             
             <div class="server-key-features">
-              <h4 class="features-title font-arcade">CARACTERÍSTICAS:</h4>
+              <h4 class="features-title arcade-font">CARACTERÍSTICAS:</h4>
               <ul class="features-list">
                 {server.features.map(feat => (
                   <li class="feature-item">⭐ {feat}</li>
@@ -68,7 +68,7 @@ import serversData from '../data/servers.json';
       <div class="live-console pixel-border">
         <div class="console-head">
           <span class="led-red"></span>
-          <span class="console-title font-arcade">LIVE LOGS: OGRES_TELEMETRY.LOG</span>
+          <span class="console-title arcade-font">LIVE LOGS: OGRES_TELEMETRY.LOG</span>
         </div>
         <div class="console-screen" id="live-server-logs">
           <!-- Terminal logs printed by JS -->
@@ -79,7 +79,7 @@ import serversData from '../data/servers.json';
           <div class="log-entry line-pokemon">[03:03:10] [POKEMON] ¡Un Mewtwo salvaje ha aparecido en el área de eventos!</div>
           <div class="log-entry line-system">[03:04:12] [SYSTEM] Salvando mapa automático... Completado.</div>
         </div>
-        <div class="clipboard-toast font-arcade" id="clipboard-toast">
+        <div class="clipboard-toast arcade-font" id="clipboard-toast">
           ¡IP COPIADA AL PORTAPAPELES!
         </div>
       </div>
