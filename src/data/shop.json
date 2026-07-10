@@ -1,0 +1,66 @@
+[
+  {
+    "id": "vip_elite",
+    "name": "Rango VIP: Entrenador Élite",
+    "price": 9.99,
+    "currency": "USD",
+    "icon": "👑",
+    "glowColor": "var(--neon-yellow)",
+    "tag": "POPULAR",
+    "benefits": [
+      "Prefijo y color dorado exclusivo en el chat",
+      "Rol VIP permanente en Discord",
+      "Kit Élite mensual: 64 Ultra Balls y 5 Caramelos Raros",
+      "Acceso prioritario (Queue Bypass) al servidor"
+    ],
+    "checkoutUrl": "https://store.ogresgames.com/checkout/vip_elite"
+  },
+  {
+    "id": "ogre_coins_500",
+    "name": "Saco de Ogre Coins (500 monedas)",
+    "price": 4.99,
+    "currency": "USD",
+    "icon": "🪙",
+    "glowColor": "var(--neon-green)",
+    "tag": "MONEDA",
+    "benefits": [
+      "500 Ogre Coins para gastar en el mercado local",
+      "Canjeable por cosméticos de entrenadores in-game",
+      "Skins exclusivas para monturas y pokéballs",
+      "Transferible a otros jugadores"
+    ],
+    "checkoutUrl": "https://store.ogresgames.com/checkout/ogre_coins_500"
+  },
+  {
+    "id": "legendary_key",
+    "name": "Llave de Cofre Legendario",
+    "price": 2.99,
+    "currency": "USD",
+    "icon": "🔑",
+    "glowColor": "var(--neon-cyan)",
+    "tag": "PROMO",
+    "benefits": [
+      "1 Llave para abrir el Cofre Místico en el Spawn",
+      "100% probabilidad de Pokémon con IVs > 80%",
+      "5% probabilidad de obtener un Pokémon Legendario",
+      "Efecto de aura brillante exclusivo para tu Pokémon"
+    ],
+    "checkoutUrl": "https://store.ogresgames.com/checkout/legendary_key"
+  },
+  {
+    "id": "studio_sponsor",
+    "name": "Patrocinador del Estudio",
+    "price": 14.99,
+    "currency": "USD",
+    "icon": "👾",
+    "glowColor": "var(--neon-pink)",
+    "tag": "SOPORTE",
+    "benefits": [
+      "Tu nombre en los créditos de nuestros juegos",
+      "Acceso anticipado a betas privadas en Steam",
+      "Rol 'Sponsor' con canal secreto en Discord",
+      "Nuestro agradecimiento eterno por apoyar el desarrollo indie"
+    ],
+    "checkoutUrl": "https://store.ogresgames.com/checkout/studio_sponsor"
+  }
+]
