@@ -1,0 +1,189 @@
+---
+// Donations.astro
+import configData from '../data/config.json';
+---
+
+<section id="donations" class="donations-section">
+  <div class="container">
+    <h2 class="section-title">DONACIONES</h2>
+    <p class="section-desc">Ayúdanos a mantener los servidores en línea y a financiar las mejoras para toda la comunidad.</p>
+    
+    <div class="donation-card pixel-border">
+      <div class="donation-header font-arcade text-green">
+        <span class="heart-icon animate-pulse">❤️</span>
+        APOYO A LA COMUNIDAD
+        <span class="heart-icon animate-pulse">❤️</span>
+      </div>
+      
+      <p class="donation-info">
+        Ogres Games es un proyecto gratuito y comunitario. Todas las donaciones se destinan íntegramente al mantenimiento del hosting de los servidores, optimización de lag, y a organizar sorteos para la comunidad. ¡Agradecemos enormemente cualquier aporte!
+      </p>
+
+      <div class="donation-options-grid">
+        <a href={`${configData.donationUrl}?amount=2`} target="_blank" rel="noopener noreferrer" class="donation-btn pixel-border">
+          <span class="amount">$2 USD</span>
+          <span class="desc font-arcade">¡INVITAR UN CAFÉ!</span>
+        </a>
+        
+        <a href={`${configData.donationUrl}?amount=5`} target="_blank" rel="noopener noreferrer" class="donation-btn pixel-border active-btn">
+          <span class="amount">$5 USD</span>
+          <span class="desc font-arcade">¡SÚPER SOPORTE!</span>
+        </a>
+        
+        <a href={`${configData.donationUrl}?amount=10`} target="_blank" rel="noopener noreferrer" class="donation-btn pixel-border">
+          <span class="amount">$10 USD</span>
+          <span class="desc font-arcade">¡PANTANO VIP!</span>
+        </a>
+        
+        <a href={`${configData.donationUrl}?amount=20`} target="_blank" rel="noopener noreferrer" class="donation-btn pixel-border">
+          <span class="amount">$20 USD</span>
+          <span class="desc font-arcade">¡HÉROE OGRE!</span>
+        </a>
+      </div>
+      
+      <div class="donation-custom-action">
+        <a 
+          href={configData.donationUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="pixel-button pixel-button-green main-donate-btn font-arcade"
+        >
+          🪙 DONAR OTRA CANTIDAD (MERCADO PAGO / PAYPAL)
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .donations-section {
+    padding: 100px 0;
+    background-color: #07050e;
+    border-top: 3px solid #141026;
+  }
+
+  .section-desc {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .donation-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(16, 12, 30, 0.9);
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(56, 239, 125, 0.2);
+    padding: 40px 30px;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .donation-header {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--neon-green-glow);
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .heart-icon {
+    font-size: 1.4rem;
+  }
+
+  .donation-info {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 35px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .donation-options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+  }
+
+  .donation-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #0d0a1c;
+    border-color: #231c3c;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    border-radius: 2px;
+  }
+
+  .donation-btn:hover {
+    transform: translateY(-3px);
+    border-color: var(--neon-green);
+    box-shadow: 0 5px 15px rgba(56, 239, 125, 0.15);
+  }
+
+  .donation-btn.active-btn {
+    border-color: var(--neon-yellow);
+    box-shadow: 0 0 10px rgba(255, 234, 0, 0.2);
+    background: rgba(255, 234, 0, 0.03);
+  }
+
+  .donation-btn.active-btn:hover {
+    border-color: var(--neon-green);
+  }
+
+  .donation-btn .amount {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .donation-btn .desc {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+    letter-spacing: 1px;
+  }
+
+  .donation-btn:hover .desc {
+    color: var(--neon-green);
+  }
+
+  .donation-custom-action {
+    display: flex;
+    justify-content: center;
+    border-top: 1px dashed #231c3c;
+    padding-top: 30px;
+  }
+
+  .main-donate-btn {
+    font-size: 0.85rem;
+    padding: 16px 32px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  @media (max-width: 576px) {
+    .donation-options-grid {
+      grid-template-columns: 1fr;
+    }
+    .donation-card {
+      padding: 30px 20px;
+    }
+  }
+</style>

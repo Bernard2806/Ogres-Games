@@ -7,68 +7,17 @@
     <h2 class="section-title">DESARROLLO DE VIDEOJUEGOS</h2>
     <p class="section-desc">El ala de desarrollo e incubación de videojuegos retro de Ogres Games.</p>
     
-    <!-- Under Construction / Planning Cabinet -->
-    <div class="construction-cabinet pixel-border">
-      <div class="cabinet-screen">
-        <div class="cabinet-glare"></div>
-        <div class="screen-content">
-          <div class="warning-ticker font-arcade">
-            <span>⚠ SISTEMA EN STANDBY - FASE DE PLANIFICACIÓN ⚠</span>
-            <span>⚠ MISIONES DE COMUNIDAD PRIORITARIAS ⚠</span>
-            <span>⚠ PRÓXIMAMENTE MÁS DETALLES ⚠</span>
-            <span>⚠ SISTEMA EN STANDBY - FASE DE PLANIFICACIÓN ⚠</span>
-            <span>⚠ MISIONES DE COMUNIDAD PRIORITARIAS ⚠</span>
-            <span>⚠ PRÓXIMAMENTE MÁS DETALLES ⚠</span>
-          </div>
-          
-          <div class="terminal-box">
-            <div class="terminal-header font-arcade">
-              <span class="dot red-dot"></span>
-              <span class="title">ESTADO: PLANIFICACIÓN / EN CONSTRUCCIÓN</span>
-            </div>
-            <div class="terminal-body terminal-font">
-              <p class="blink-line">&gt; cargando_estudio_de_videojuegos.sh...</p>
-              <p class="error-line">[AVISO] Módulos de desarrollo de juegos pospuestos temporalmente.</p>
-              <br/>
-              <p class="info-line">&gt; MEMORIA DE PROYECTO: En Ogres Games nos enfocamos al 100% en expandir y enriquecer nuestra comunidad gamer y en nuestros servidores dedicados (Minecraft Pokémon, etc.).</p>
-              <p class="info-line">&gt; Los planes para lanzar y desarrollar videojuegos independientes propios se encuentran en fase de planificación estratégica, análisis y diseño de conceptos.</p>
-              <br/>
-              <p class="prompt-line">&gt; ¿Quieres proponer mecánicas de juego o estar al tanto de novedades? Únete a nuestro Discord oficial.</p>
-            </div>
-          </div>
-          
-          <div class="arcade-buttons-sim">
-            <div class="btn-group">
-              <div class="arc-btn btn-pink-glow"></div>
-              <span class="btn-label font-arcade">DISEÑO</span>
-            </div>
-            <div class="btn-group">
-              <div class="arc-btn btn-cyan-glow"></div>
-              <span class="btn-label font-arcade">CONCEPTO</span>
-            </div>
-            <div class="btn-group">
-              <a href="#servers" class="arc-btn-link btn-yellow-glow">
-                <span class="btn-inner"></span>
-              </a>
-              <span class="btn-label font-arcade">SERVIDORES</span>
-            </div>
-          </div>
-        </div>
+    <div class="simple-construction-box pixel-border">
+      <div class="status-badge font-arcade">
+        <span class="status-dot"></span>
+        ESTADO: SECCIÓN EN PLANIFICACIÓN
       </div>
-      
-      <div class="cabinet-bezel-bottom">
-        <div class="coin-slots">
-          <div class="coin-slot-bezel">
-            <span class="coin-light active-neon-yellow"></span>
-            <div class="coin-entry"></div>
-            <span class="coin-text font-arcade">INSERT COIN TO JOIN</span>
-          </div>
-          <div class="coin-slot-bezel">
-            <span class="coin-light"></span>
-            <div class="coin-entry"></div>
-            <span class="coin-text font-arcade">COIN REJECT</span>
-          </div>
-        </div>
+      <p class="construction-text">
+        Actualmente estamos enfocados al 100% en expandir y enriquecer nuestra comunidad gamer y en nuestros servidores dedicados (Minecraft Pokémon, etc.). 
+        El desarrollo y lanzamiento de videojuegos independientes propios se encuentra bajo estudio y diseño de conceptos para el futuro.
+      </p>
+      <div class="construction-footer">
+        <a href="#servers" class="pixel-button font-arcade">VER SERVIDORES</a>
       </div>
     </div>
   </div>
@@ -76,7 +25,7 @@
 
 <style>
   .projects-section {
-    padding: 100px 0;
+    padding: 80px 0;
     border-top: 3px solid #141026;
     background-color: rgba(7, 5, 14, 0.5);
   }
@@ -86,315 +35,77 @@
     color: var(--color-text-muted);
     font-size: 0.95rem;
     margin-top: -30px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .construction-cabinet {
-    max-width: 800px;
+  .simple-construction-box {
+    max-width: 650px;
     margin: 0 auto;
     background: #110d24;
     border-color: var(--neon-purple);
-    box-shadow: 0 0 25px rgba(188, 19, 254, 0.3);
-    border-radius: 6px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cabinet-screen {
-    background: #000;
-    border: 15px solid #1a1533;
-    position: relative;
     padding: 30px;
-    overflow: hidden;
-    min-height: 380px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .cabinet-glare {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.05) 0%,
-      rgba(255, 255, 255, 0.05) 15%,
-      rgba(255, 255, 255, 0) 16%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    pointer-events: none;
-    z-index: 5;
-  }
-
-  .screen-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    gap: 20px;
-    z-index: 2;
-  }
-
-  /* Warning Ticker */
-  .warning-ticker {
-    background: #2b001a;
-    border: 1px solid var(--neon-pink);
-    color: var(--neon-pink);
-    text-shadow: 0 0 5px var(--neon-pink);
-    padding: 8px;
-    font-size: 0.75rem;
-    overflow: hidden;
-    white-space: nowrap;
-    display: flex;
-    gap: 30px;
-    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
-  }
-
-  .warning-ticker span {
-    display: inline-block;
-    animation: ticker 25s linear infinite;
-  }
-
-  @keyframes ticker {
-    0% { transform: translate3d(0, 0, 0); }
-    100% { transform: translate3d(-50%, 0, 0); }
-  }
-
-  /* Terminal */
-  .terminal-box {
-    background: rgba(10, 5, 20, 0.85);
-    border: 2px solid #231c3c;
-    padding: 20px;
     border-radius: 4px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+    text-align: center;
+    box-shadow: 0 0 15px rgba(188, 19, 254, 0.2);
   }
 
-  .terminal-header {
-    display: flex;
+  .status-badge {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px dashed #231c3c;
-    padding-bottom: 8px;
-    font-size: 0.65rem;
-    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink-glow);
+    background-color: rgba(255, 0, 85, 0.1);
+    padding: 8px 16px;
+    border: 1px solid var(--neon-pink);
+    border-radius: 2px;
+    margin-bottom: 20px;
   }
 
-  .terminal-header .dot {
+  .status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    background-color: var(--neon-pink);
+    box-shadow: 0 0 8px var(--neon-pink);
+    animation: pulse-dot 1.2s infinite alternate;
   }
 
-  .red-dot {
-    background-color: #ff0055;
-    box-shadow: 0 0 8px #ff0055;
-    animation: led-blink-fast 0.6s infinite alternate;
-  }
-
-  @keyframes led-blink-fast {
-    0% { opacity: 0.3; }
-    100% { opacity: 1; }
-  }
-
-  .terminal-body {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    color: var(--color-text-muted);
-  }
-
-  .blink-line {
-    color: var(--neon-cyan);
-    text-shadow: 0 0 3px var(--neon-cyan-glow);
-  }
-
-  .error-line {
-    color: var(--neon-pink);
-    text-shadow: 0 0 3px var(--neon-pink-glow);
-    font-weight: bold;
-  }
-
-  .info-line {
-    color: #dfdbe5;
-  }
-
-  .prompt-line {
-    color: var(--neon-yellow);
-    text-shadow: 0 0 3px var(--neon-yellow-glow);
-  }
-
-  /* Arcade buttons simulator */
-  .arcade-buttons-sim {
-    display: flex;
-    justify-content: center;
-    gap: 35px;
-    margin-top: 10px;
-  }
-
-  .btn-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .arc-btn {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #110d24;
-    border: 3px solid #231c3c;
-    position: relative;
-    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
-  }
-
-  .arc-btn-link {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #110d24;
-    border: 3px solid #231c3c;
-    position: relative;
-    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
-    display: block;
-    cursor: pointer;
-    transition: transform 0.1s ease;
-  }
-
-  .arc-btn-link:active {
-    transform: scale(0.9);
-  }
-
-  .btn-inner {
-    position: absolute;
-    top: 3px;
-    left: 3px;
-    right: 3px;
-    bottom: 3px;
-    border-radius: 50%;
-    background: var(--neon-yellow);
-    box-shadow: 0 0 8px var(--neon-yellow);
-  }
-
-  .btn-pink-glow {
-    border-color: var(--neon-pink);
-    box-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
-    background: var(--neon-pink);
-  }
-
-  .btn-cyan-glow {
-    border-color: var(--neon-cyan);
-    box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
-    background: var(--neon-cyan);
-  }
-
-  .btn-yellow-glow {
-    border-color: var(--neon-yellow);
-    box-shadow: 0 0 8px rgba(255, 234, 0, 0.4);
-  }
-
-  .btn-label {
-    font-size: 0.55rem;
-    color: var(--color-text-muted);
-  }
-
-  /* Cabinet Bezel Bottom / Coin slots */
-  .cabinet-bezel-bottom {
-    background: #0f0a1c;
-    border-top: 5px solid #1c1638;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-
-  .coin-slots {
-    display: flex;
-    gap: 40px;
-  }
-
-  .coin-slot-bezel {
-    border: 2px solid #231c3c;
-    background: #06040a;
-    padding: 10px 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    width: 140px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
-  }
-
-  .coin-light {
-    width: 12px;
-    height: 6px;
-    background: #551100;
-    border-radius: 2px;
-  }
-
-  .active-neon-yellow {
-    background: var(--neon-yellow);
-    box-shadow: 0 0 8px var(--neon-yellow);
-    animation: led-blink 1.2s infinite alternate;
-  }
-
-  .coin-entry {
-    width: 6px;
-    height: 35px;
-    background: #000;
-    border: 2px solid #110d24;
-    border-radius: 2px;
-    box-shadow: inset 0 0 4px rgba(255,255,255,0.05);
-  }
-
-  .coin-text {
-    font-size: 0.45rem;
-    color: #433878;
-    text-align: center;
-    letter-spacing: 0.5px;
-  }
-
-  .active-neon-yellow ~ .coin-text {
-    color: var(--neon-yellow);
-    text-shadow: 0 0 2px var(--neon-yellow-glow);
-  }
-
-  @keyframes led-blink {
+  @keyframes pulse-dot {
     0% { opacity: 0.4; }
     100% { opacity: 1; }
   }
 
-  @media (max-width: 576px) {
-    .cabinet-screen {
-      padding: 15px;
-      min-height: 340px;
-    }
-    
-    .terminal-box {
-      padding: 15px;
-    }
+  .construction-text {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .arcade-buttons-sim {
-      gap: 20px;
-    }
+  .construction-footer {
+    display: flex;
+    justify-content: center;
+  }
 
-    .coin-slots {
-      gap: 20px;
-    }
+  .construction-footer .pixel-button {
+    font-size: 0.75rem;
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    background: transparent;
+    transition: all 0.2s ease;
+  }
 
-    .coin-slot-bezel {
-      width: 110px;
-    }
+  .construction-footer .pixel-button:hover {
+    background-color: var(--neon-cyan) !important;
+    color: #07050e !important;
+    box-shadow: 0 0 15px var(--neon-cyan) !important;
   }
 </style>
