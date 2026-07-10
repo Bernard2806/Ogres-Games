@@ -1,91 +1,75 @@
 ---
 // Projects.astro
-
-const projects = [
-  {
-    id: "super_ogre_world",
-    title: "Super Ogre World",
-    genre: "Plataformas / Pixel Art",
-    engine: "Godot Engine",
-    status: "EN DESARROLLO (ALPHA)",
-    release: "PRÓXIMAMENTE",
-    description: "¡NUESTRO PRIMER PROYECTO RETRO! Un juego de plataformas de precisión en pixel art que está actualmente en elaboración. Contará con físicas desafiantes y niveles llenos de secretos. ¡Pronto iniciaremos fase de reclutamiento para testers!",
-    imageColor: "linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%)",
-    glowColor: "var(--neon-pink)",
-    tags: ["EN CONSTRUCCIÓN", "PIXEL ART", "Godot"]
-  },
-  {
-    id: "cyber_ogre_2099",
-    title: "Cyber Ogre 2099",
-    genre: "Retro Shoot 'em up",
-    engine: "Unity 2D",
-    status: "PLANIFICACIÓN (IDEA)",
-    release: "TBA",
-    description: "Un shooter de navecitas al estilo arcade clásico con música synthwave y jefes gigantescos. Actualmente en fase de diseño de concepto artístico y mecánicas básicas de juego.",
-    imageColor: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
-    glowColor: "var(--neon-cyan)",
-    tags: ["CONCEPTO", "SYNTHWAVE", "Unity"]
-  },
-  {
-    id: "ogre_launcher",
-    title: "Ogres Custom Launcher",
-    genre: "Herramienta Comunidad",
-    engine: "Electron / Rust",
-    status: "EN ELABORACIÓN",
-    release: "PRÓXIMAMENTE",
-    description: "Una aplicación de escritorio nativa para lanzar nuestro modpack de Minecraft Pokémon con optimizaciones avanzadas de rendimiento y descarga automática de mods y texturas.",
-    imageColor: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
-    glowColor: "var(--neon-green)",
-    tags: ["PIXELMON", "RUST", "DESKTOP"]
-  }
-];
 ---
 
 <section id="projects" class="projects-section">
   <div class="container">
-    <h2 class="section-title">NUESTROS JUEGOS</h2>
-    <p class="section-desc">Proyectos y videojuegos independientes creados con cariño retro en el estudio de Ogres Games.</p>
+    <h2 class="section-title">DESARROLLO DE VIDEOJUEGOS</h2>
+    <p class="section-desc">El ala de desarrollo e incubación de videojuegos retro de Ogres Games.</p>
     
-    <div class="projects-grid">
-      {projects.map((project) => (
-        <div class="project-card pixel-border" style={`--glow-hover: ${project.glowColor}`}>
-          <!-- Game Cartridge Bezel -->
-          <div class="cartridge-label" style={`background: ${project.imageColor}`}>
-            <div class="cartridge-glare"></div>
-            <div class="game-screen-sim">
-              <span class="arcade-font status-stamp">{project.status}</span>
-              <div class="pixel-art-mockup">
-                <span class="game-char-pixel">👾</span>
-              </div>
+    <!-- Under Construction / Planning Cabinet -->
+    <div class="construction-cabinet pixel-border">
+      <div class="cabinet-screen">
+        <div class="cabinet-glare"></div>
+        <div class="screen-content">
+          <div class="warning-ticker font-arcade">
+            <span>⚠ SISTEMA EN STANDBY - FASE DE PLANIFICACIÓN ⚠</span>
+            <span>⚠ MISIONES DE COMUNIDAD PRIORITARIAS ⚠</span>
+            <span>⚠ PRÓXIMAMENTE MÁS DETALLES ⚠</span>
+            <span>⚠ SISTEMA EN STANDBY - FASE DE PLANIFICACIÓN ⚠</span>
+            <span>⚠ MISIONES DE COMUNIDAD PRIORITARIAS ⚠</span>
+            <span>⚠ PRÓXIMAMENTE MÁS DETALLES ⚠</span>
+          </div>
+          
+          <div class="terminal-box">
+            <div class="terminal-header font-arcade">
+              <span class="dot red-dot"></span>
+              <span class="title">ESTADO: PLANIFICACIÓN / EN CONSTRUCCIÓN</span>
+            </div>
+            <div class="terminal-body terminal-font">
+              <p class="blink-line">&gt; cargando_estudio_de_videojuegos.sh...</p>
+              <p class="error-line">[AVISO] Módulos de desarrollo de juegos pospuestos temporalmente.</p>
+              <br/>
+              <p class="info-line">&gt; MEMORIA DE PROYECTO: En Ogres Games nos enfocamos al 100% en expandir y enriquecer nuestra comunidad gamer y en nuestros servidores dedicados (Minecraft Pokémon, etc.).</p>
+              <p class="info-line">&gt; Los planes para lanzar y desarrollar videojuegos independientes propios se encuentran en fase de planificación estratégica, análisis y diseño de conceptos.</p>
+              <br/>
+              <p class="prompt-line">&gt; ¿Quieres proponer mecánicas de juego o estar al tanto de novedades? Únete a nuestro Discord oficial.</p>
             </div>
           </div>
           
-          <!-- Game Info -->
-          <div class="project-details">
-            <div class="project-tags">
-              {project.tags.map(tag => (
-                <span class={`tag ${project.glowColor === 'var(--neon-cyan)' ? 'tag-cyan' : project.glowColor === 'var(--neon-green)' ? 'tag-green' : 'tag-pink'}`}>{tag}</span>
-              ))}
+          <div class="arcade-buttons-sim">
+            <div class="btn-group">
+              <div class="arc-btn btn-pink-glow"></div>
+              <span class="btn-label font-arcade">DISEÑO</span>
             </div>
-            
-            <h3 class="project-title arcade-font">{project.title}</h3>
-            
-            <div class="project-meta-grid terminal-font">
-              <div><span>GÉNERO:</span> {project.genre}</div>
-              <div><span>MOTOR:</span> {project.engine}</div>
-              <div><span>LANZAMIENTO:</span> {project.release}</div>
+            <div class="btn-group">
+              <div class="arc-btn btn-cyan-glow"></div>
+              <span class="btn-label font-arcade">CONCEPTO</span>
             </div>
-            
-            <p class="project-description">{project.description}</p>
-            
-            <div class="project-actions">
-              <a href="#servers" class="pixel-button" style={`border-color: ${project.glowColor}; color: ${project.glowColor}; box-shadow: 0 0 5px ${project.glowColor}55;`}>
-                SABER MÁS
+            <div class="btn-group">
+              <a href="#servers" class="arc-btn-link btn-yellow-glow">
+                <span class="btn-inner"></span>
               </a>
+              <span class="btn-label font-arcade">SERVIDORES</span>
             </div>
           </div>
         </div>
-      ))}
+      </div>
+      
+      <div class="cabinet-bezel-bottom">
+        <div class="coin-slots">
+          <div class="coin-slot-bezel">
+            <span class="coin-light active-neon-yellow"></span>
+            <div class="coin-entry"></div>
+            <span class="coin-text font-arcade">INSERT COIN TO JOIN</span>
+          </div>
+          <div class="coin-slot-bezel">
+            <span class="coin-light"></span>
+            <div class="coin-entry"></div>
+            <span class="coin-text font-arcade">COIN REJECT</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -108,160 +92,309 @@ const projects = [
     margin-right: auto;
   }
 
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 40px;
-  }
-
-  .project-card {
+  .construction-cabinet {
+    max-width: 800px;
+    margin: 0 auto;
     background: #110d24;
-    border-color: #231c3c;
-    border-radius: 4px;
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 25px rgba(188, 19, 254, 0.3);
+    border-radius: 6px;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
   }
 
-  .project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--glow-hover);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 20px var(--glow-hover);
-  }
-
-  /* Cartridge Label simulation */
-  .cartridge-label {
-    height: 200px;
+  .cabinet-screen {
+    background: #000;
+    border: 15px solid #1a1533;
     position: relative;
+    padding: 30px;
     overflow: hidden;
+    min-height: 380px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 4px solid #1c1638;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .cartridge-glare {
+  .cabinet-glare {
     position: absolute;
     top: 0;
     left: 0;
     width: 200%;
     height: 100%;
     background: linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(255, 255, 255, 0.15) 30%,
-      rgba(255, 255, 255, 0) 31%,
+      120deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.05) 15%,
+      rgba(255, 255, 255, 0) 16%,
       rgba(255, 255, 255, 0) 100%
     );
-    transition: transform 0.5s ease;
-    transform: translateX(-50%);
     pointer-events: none;
+    z-index: 5;
   }
 
-  .project-card:hover .cartridge-glare {
-    transform: translateX(0%);
-  }
-
-  .game-screen-sim {
-    width: 85%;
-    height: 80%;
-    background: rgba(0, 0, 0, 0.85);
-    border: 3px solid #141026;
-    border-radius: 4px;
-    padding: 10px;
+  .screen-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    position: relative;
+    height: 100%;
+    gap: 20px;
+    z-index: 2;
   }
 
-  .status-stamp {
-    font-size: 0.55rem;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 4px 6px;
-    border: 1px dashed var(--glow-hover);
-    align-self: flex-start;
+  /* Warning Ticker */
+  .warning-ticker {
+    background: #2b001a;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px var(--neon-pink);
+    padding: 8px;
+    font-size: 0.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    gap: 30px;
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
   }
 
-  .pixel-art-mockup {
+  .warning-ticker span {
+    display: inline-block;
+    animation: ticker 25s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+
+  /* Terminal */
+  .terminal-box {
+    background: rgba(10, 5, 20, 0.85);
+    border: 2px solid #231c3c;
+    padding: 20px;
+    border-radius: 4px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px dashed #231c3c;
+    padding-bottom: 8px;
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+  }
+
+  .terminal-header .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .red-dot {
+    background-color: #ff0055;
+    box-shadow: 0 0 8px #ff0055;
+    animation: led-blink-fast 0.6s infinite alternate;
+  }
+
+  @keyframes led-blink-fast {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
+
+  .terminal-body {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--color-text-muted);
+  }
+
+  .blink-line {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 3px var(--neon-cyan-glow);
+  }
+
+  .error-line {
+    color: var(--neon-pink);
+    text-shadow: 0 0 3px var(--neon-pink-glow);
+    font-weight: bold;
+  }
+
+  .info-line {
+    color: #dfdbe5;
+  }
+
+  .prompt-line {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 3px var(--neon-yellow-glow);
+  }
+
+  /* Arcade buttons simulator */
+  .arcade-buttons-sim {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-grow: 1;
+    gap: 35px;
+    margin-top: 10px;
   }
 
-  .game-char-pixel {
-    font-size: 3rem;
-    animation: character-bounce 1s ease infinite alternate;
-  }
-
-  @keyframes character-bounce {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px) scaleY(0.95); }
-  }
-
-  /* Details Panel */
-  .project-details {
-    padding: 25px;
+  .btn-group {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    align-items: center;
+    gap: 8px;
   }
 
-  .project-tags {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+  .arc-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #110d24;
+    border: 3px solid #231c3c;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
   }
 
-  .project-title {
-    font-size: 1rem;
-    margin-bottom: 15px;
-    color: #fff;
+  .arc-btn-link {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #110d24;
+    border: 3px solid #231c3c;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1);
+    display: block;
+    cursor: pointer;
+    transition: transform 0.1s ease;
   }
 
-  .project-meta-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 6px;
-    font-size: 0.95rem;
-    background: rgba(0,0,0,0.3);
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    border: 1px solid #1e1836;
+  .arc-btn-link:active {
+    transform: scale(0.9);
   }
 
-  .project-meta-grid span {
+  .btn-inner {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border-radius: 50%;
+    background: var(--neon-yellow);
+    box-shadow: 0 0 8px var(--neon-yellow);
+  }
+
+  .btn-pink-glow {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+    background: var(--neon-pink);
+  }
+
+  .btn-cyan-glow {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 8px rgba(0, 243, 255, 0.4);
+    background: var(--neon-cyan);
+  }
+
+  .btn-yellow-glow {
+    border-color: var(--neon-yellow);
+    box-shadow: 0 0 8px rgba(255, 234, 0, 0.4);
+  }
+
+  .btn-label {
+    font-size: 0.55rem;
     color: var(--color-text-muted);
   }
 
-  .project-description {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    line-height: 1.6;
-    margin-bottom: 25px;
-    flex-grow: 1;
-  }
-
-  .project-actions {
+  /* Cabinet Bezel Bottom / Coin slots */
+  .cabinet-bezel-bottom {
+    background: #0f0a1c;
+    border-top: 5px solid #1c1638;
+    padding: 20px;
     display: flex;
+    justify-content: center;
   }
 
-  .project-actions .pixel-button {
-    width: 100%;
-    font-size: 0.7rem;
-    background: transparent;
-    transition: all 0.2s ease;
+  .coin-slots {
+    display: flex;
+    gap: 40px;
   }
 
-  .project-actions .pixel-button:hover {
-    color: #07050e !important;
-    background-color: var(--glow-hover) !important;
-    box-shadow: 0 0 15px var(--glow-hover) !important;
+  .coin-slot-bezel {
+    border: 2px solid #231c3c;
+    background: #06040a;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 140px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.9);
+  }
+
+  .coin-light {
+    width: 12px;
+    height: 6px;
+    background: #551100;
+    border-radius: 2px;
+  }
+
+  .active-neon-yellow {
+    background: var(--neon-yellow);
+    box-shadow: 0 0 8px var(--neon-yellow);
+    animation: led-blink 1.2s infinite alternate;
+  }
+
+  .coin-entry {
+    width: 6px;
+    height: 35px;
+    background: #000;
+    border: 2px solid #110d24;
+    border-radius: 2px;
+    box-shadow: inset 0 0 4px rgba(255,255,255,0.05);
+  }
+
+  .coin-text {
+    font-size: 0.45rem;
+    color: #433878;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .active-neon-yellow ~ .coin-text {
+    color: var(--neon-yellow);
+    text-shadow: 0 0 2px var(--neon-yellow-glow);
+  }
+
+  @keyframes led-blink {
+    0% { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
+
+  @media (max-width: 576px) {
+    .cabinet-screen {
+      padding: 15px;
+      min-height: 340px;
+    }
+    
+    .terminal-box {
+      padding: 15px;
+    }
+
+    .arcade-buttons-sim {
+      gap: 20px;
+    }
+
+    .coin-slots {
+      gap: 20px;
+    }
+
+    .coin-slot-bezel {
+      width: 110px;
+    }
   }
 </style>
