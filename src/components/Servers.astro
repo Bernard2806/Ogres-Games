@@ -3,6 +3,9 @@
 import serversData from '../data/servers.json';
 import pokemonLogo from '../assets/images/sv-pokemon.png';
 import counterLogo from '../assets/images/sv-counter.png';
+import mediafireIcon from '../assets/images/icons-file-providers/mediafire.png';
+import megaIcon from '../assets/images/icons-file-providers/mega.png';
+import workuploadIcon from '../assets/images/icons-file-providers/workupload.png';
 
 const logoMap = {
   minecraft_cobbleverse: pokemonLogo,
@@ -131,27 +134,19 @@ const logoMap = {
           <div class="download-options">
             <!-- MediaFire -->
             <a href="https://www.mediafire.com" target="_blank" rel="noopener noreferrer" class="download-opt-link mediafire-btn">
-              <svg class="provider-logo-svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
-              </svg>
+              <img src={mediafireIcon.src} class="provider-logo-img" alt="MediaFire" width="22" height="22" />
               <span class="host-name arcade-font">MEDIAFIRE</span>
             </a>
             
             <!-- Mega -->
             <a href="https://mega.nz" target="_blank" rel="noopener noreferrer" class="download-opt-link mega-btn">
-              <svg class="provider-logo-svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                <circle cx="12" cy="12" r="10" fill="currentColor"/>
-                <path d="M7 16V9.5L10 12l3-2.5V16h2V8h-2l-3 2.5L7 8H5v8h2z" fill="#0d0a1c"/>
-              </svg>
+              <img src={megaIcon.src} class="provider-logo-img" alt="MEGA" width="22" height="22" />
               <span class="host-name arcade-font">MEGA</span>
             </a>
             
             <!-- WorkUpload -->
             <a href="https://workupload.com" target="_blank" rel="noopener noreferrer" class="download-opt-link workupload-btn">
-              <svg class="provider-logo-svg" viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
-                <circle cx="12" cy="12" r="10" fill="currentColor"/>
-                <path d="M12 7l-4 4h3v5h2v-5h3l-4-4z" fill="#0d0a1c"/>
-              </svg>
+              <img src={workuploadIcon.src} class="provider-logo-img" alt="WorkUpload" width="22" height="22" />
               <span class="host-name arcade-font">WORKUPLOAD</span>
             </a>
           </div>
@@ -882,12 +877,15 @@ const logoMap = {
     border-radius: 4px;
   }
 
-  .provider-logo-svg {
+  .provider-logo-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
     flex-shrink: 0;
     transition: transform 0.2s ease;
   }
 
-  .download-opt-link:hover .provider-logo-svg {
+  .download-opt-link:hover .provider-logo-img {
     transform: scale(1.1);
   }
 
