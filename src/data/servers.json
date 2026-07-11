@@ -1,41 +1,41 @@
 [
   {
-    "id": "minecraft_pokemon",
-    "name": "Ogres Pokémon Craft",
-    "game": "Minecraft (Pixelmon)",
-    "ip": "mc.ogresgames.com",
+    "id": "minecraft_cobbleverse",
+    "name": "Ogres Cobbleverse",
+    "game": "Minecraft (Cobblemon)",
+    "ip": "pokemon.ogresblood.games",
     "status": "ONLINE",
-    "version": "1.20.2 (Pixelmon 9.1.12)",
+    "version": "1.21.1 (Cobblemon)",
     "players": {
-      "online": 42,
+      "online": 0,
       "max": 100
     },
-    "description": "Embark on an epic Pokemon adventure in Minecraft! Capture wild Pokemon, challenge custom player-run gyms, trade with others, and participate in daily tournament events.",
+    "description": "¡El universo Pokémon se fusiona con Minecraft! Captura, entrena y combate con tus Cobblemon en un mundo persistente lleno de aventuras y gimnasios desafiantes.",
     "features": [
-      "Pixelmon Reforged Modpack",
-      "8 Custom Gyms & Elite Four",
-      "Survival RPG Economy",
-      "Legendary Pokémon Spawns"
+      "Modpack Cobblemon Oficial",
+      "Gimnasios y Ligas Activas",
+      "Economía RPG & Clanes",
+      "Mundo de Aventura Abierto"
     ],
     "discordUrl": "https://discord.gg/ogresgames"
   },
   {
-    "id": "discord_citadel",
-    "name": "Ogres Discord Citadel",
-    "game": "Gamer Community",
-    "ip": "discord.gg/ogresgames",
-    "status": "ACTIVE",
-    "version": "v3.5 (Ogre Bot)",
+    "id": "cs_16",
+    "name": "Ogres CS 1.6 Retro",
+    "game": "Counter-Strike 1.6",
+    "ip": "cs.ogresblood.games",
+    "status": "PRÓXIMAMENTE",
+    "version": "v48 Non-Steam / Steam",
     "players": {
-      "online": 438,
-      "max": 1500
+      "online": 0,
+      "max": 32
     },
-    "description": "The central hub for all Ogres Games players. Chat with developers, discuss strategies, find teammates, and get real-time server updates.",
+    "description": "Revive la nostalgia clásica de los cyber-cafés. Nuestro servidor dedicado de CS 1.6 contará con mapas legendarios y registro de hits optimizado.",
     "features": [
-      "Dev Blog & Game Previews",
-      "Looking For Group Channels",
-      "Beta Testing Invitations",
-      "Meme & Fanart Showcases"
+      "Mapas Clásicos & Rotativos",
+      "Ping Ultra Bajo (LATAM)",
+      "Anti-Cheat & Registro Pulido",
+      "Estadísticas y Clasificaciones"
     ],
     "discordUrl": "https://discord.gg/ogresgames"
   }
