@@ -3,6 +3,7 @@
 import serversData from '../data/servers.json';
 import pokemonLogo from '../assets/images/sv-pokemon.png';
 import counterLogo from '../assets/images/sv-counter.png';
+import driveIcon from '../assets/images/icons-file-providers/drive.webp';
 import mediafireIcon from '../assets/images/icons-file-providers/mediafire.png';
 import megaIcon from '../assets/images/icons-file-providers/mega.png';
 import workuploadIcon from '../assets/images/icons-file-providers/workupload.png';
@@ -132,23 +133,29 @@ const logoMap = {
           
           <!-- Enlaces de Descarga -->
           <div class="download-options">
-            <!-- MediaFire -->
-            <a href="https://www.mediafire.com" target="_blank" rel="noopener noreferrer" class="download-opt-link mediafire-btn">
-              <img src={mediafireIcon.src} class="provider-logo-img" alt="MediaFire" width="22" height="22" />
-              <span class="host-name arcade-font">MEDIAFIRE</span>
+            <!-- Google Drive -->
+            <a href="https://drive.google.com/drive/folders/1FnEut6QhkG2sSzuqshnaftw_VS5_SO24?usp=sharing" target="_blank" rel="noopener noreferrer" class="download-opt-link drive-btn">
+              <img src={driveIcon.src} class="provider-logo-img" alt="Google Drive" width="22" height="22" />
+              <span class="host-name arcade-font">GOOGLE DRIVE</span>
             </a>
+
+            <!-- MediaFire -->
+            <div class="download-opt-link mediafire-btn blocked">
+              <img src={mediafireIcon.src} class="provider-logo-img" alt="MediaFire" width="22" height="22" />
+              <span class="host-name arcade-font">MEDIAFIRE (BLOQUEADO)</span>
+            </div>
             
             <!-- Mega -->
-            <a href="https://mega.nz" target="_blank" rel="noopener noreferrer" class="download-opt-link mega-btn">
+            <div class="download-opt-link mega-btn blocked">
               <img src={megaIcon.src} class="provider-logo-img" alt="MEGA" width="22" height="22" />
-              <span class="host-name arcade-font">MEGA</span>
-            </a>
+              <span class="host-name arcade-font">MEGA (BLOQUEADO)</span>
+            </div>
             
             <!-- WorkUpload -->
-            <a href="https://workupload.com" target="_blank" rel="noopener noreferrer" class="download-opt-link workupload-btn">
+            <div class="download-opt-link workupload-btn blocked">
               <img src={workuploadIcon.src} class="provider-logo-img" alt="WorkUpload" width="22" height="22" />
-              <span class="host-name arcade-font">WORKUPLOAD</span>
-            </a>
+              <span class="host-name arcade-font">WORKUPLOAD (BLOQUEADO)</span>
+            </div>
           </div>
           
           <!-- Soporte Discord y Botón de Cierre -->
@@ -271,6 +278,14 @@ const logoMap = {
         modalBackdrop.classList.remove('show');
         document.body.style.overflow = '';
       }
+    });
+  }
+
+  const closeModalFooterBtn = document.getElementById('close-modal-footer-btn');
+  if (closeModalFooterBtn && modalBackdrop) {
+    closeModalFooterBtn.addEventListener('click', () => {
+      modalBackdrop.classList.remove('show');
+      document.body.style.overflow = ''; // Allow scrolling
     });
   }
 
@@ -932,6 +947,28 @@ const logoMap = {
     color: #fff;
     box-shadow: 0 0 15px rgba(255, 92, 0, 0.5);
     transform: translateY(-2px);
+  }
+
+  .drive-btn {
+    border-color: #2ca559;
+    color: #2ca559;
+    background-color: rgba(44, 165, 89, 0.05);
+  }
+
+  .drive-btn:hover {
+    background-color: #2ca559;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(44, 165, 89, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .download-opt-link.blocked {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+    transform: none !important;
   }
 
   /* Help Footer */
