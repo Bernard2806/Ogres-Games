@@ -20,6 +20,10 @@
   --neon-yellow: #ffea00;
   --neon-yellow-glow: rgba(255, 234, 0, 0.5);
   
+  /* Brand Colors */
+  --brand-discord: #5865F2;
+  --brand-discord-glow: rgba(88, 101, 242, 0.5);
+  
   /* Fonts */
   --font-arcade: 'Press Start 2P', monospace;
   --font-terminal: 'VT323', monospace;
@@ -213,6 +217,18 @@ body {
   background-color: var(--neon-purple);
   color: var(--color-bg);
   box-shadow: 0 0 20px var(--neon-purple), 0 0 5px var(--neon-purple);
+}
+
+.pixel-button-discord {
+  border-color: var(--brand-discord);
+  color: var(--brand-discord);
+  box-shadow: 0 0 8px var(--brand-discord-glow);
+}
+
+.pixel-button-discord:hover {
+  background-color: var(--brand-discord);
+  color: #fff;
+  box-shadow: 0 0 20px var(--brand-discord), 0 0 5px var(--brand-discord);
 }
 
 .pixel-button-green {

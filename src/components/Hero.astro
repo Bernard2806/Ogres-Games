@@ -27,32 +27,32 @@ import logoImg from '../assets/images/Logo-OG.png';
               <p class="hero-subtitle">SERVIDORES RETRO Y COMUNIDAD GAMER</p>
             </div>
             
-            <!-- System Boot Console -->
-            <div class="system-console">
-              <div class="console-header">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-                <span class="terminal-title">system_boot.exe</span>
-              </div>
-              <div class="console-body terminal-font" id="typewriter-console">
-                <!-- Lines will be dynamically typed here -->
-                <noscript>
-                  &gt; SYSTEM BOOT: OGRES-OS v1.0.0<br/>
-                  &gt; STATUS: COMMUNITY GATEWAY OPEN<br/>
-                  &gt; FOCUS: COBBLEVERSE & CS 1.6 SERVERS<br/>
-                  &gt; PRESS START TO PLAY.
-                </noscript>
-              </div>
+            <!-- Retro Arcade Start Prompt -->
+            <div class="arcade-start-prompt">
+              <span class="blink-text">
+                <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z"/>
+                </svg>
+                INICIA TU AVENTURA
+                <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192z"/>
+                </svg>
+              </span>
             </div>
             
             <!-- CTA Buttons -->
             <div class="cta-actions">
               <a href="#servers" class="pixel-button pixel-button-green">
-                <span class="icon">🎮</span> SERVIDORES
+                <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 6H3c-1.65 0-3 1.35-3 3v6c0 1.65 1.35 3 3 3h18c1.65 0 3-1.35 3-3V9c0-1.65-1.35-3-3-3zM9 13H7v2H5v-2H3v-2h2V9h2v2h2v2zm4.5 1.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+                </svg>
+                SERVIDORES
               </a>
-              <a href="#discord-quest" class="pixel-button pixel-button-purple">
-                <span class="icon">👾</span> DISCORD
+              <a href="#discord-quest" class="pixel-button pixel-button-discord">
+                <svg class="button-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189z"/>
+                </svg>
+                DISCORD
               </a>
             </div>
             
@@ -79,74 +79,7 @@ import logoImg from '../assets/images/Logo-OG.png';
   </div>
 </section>
 
-<script>
-  const consoleLines = [
-    "> SYSTEM BOOT: OGRES_OS_V1.0.0...",
-    "> LOADING KERNEL... SUCCESS.",
-    "> COMMUNITY SERVER TELEMETRY: CONNECTED.",
-    "> COBBLEVERSE & CS 1.6 SERVERS: INITIALIZING...",
-    "> OGRES GAMES STUDIO: WORKING ON NEW SECRETS...",
-    "> INITIALIZATION COMPLETE.",
-    "> READY PLAYER ONE. INSERT COIN..."
-  ];
 
-  const consoleContainer = document.getElementById('typewriter-console');
-  let currentLineIndex = 0;
-  let currentCharIndex = 0;
-  
-  function typeNextChar() {
-    if (!consoleContainer) return;
-    
-    // Clear terminal initially
-    if (currentLineIndex === 0 && currentCharIndex === 0) {
-      consoleContainer.innerHTML = '';
-    }
-
-    if (currentLineIndex < consoleLines.length) {
-      const currentLineText = consoleLines[currentLineIndex];
-      
-      // If we are at the beginning of a line, create a line element
-      if (currentCharIndex === 0) {
-        const lineDiv = document.createElement('div');
-        lineDiv.className = 'console-line';
-        if (currentLineIndex === consoleLines.length - 1) {
-          lineDiv.classList.add('final-line', 'glow-text-green');
-        }
-        consoleContainer.appendChild(lineDiv);
-      }
-      
-      const currentLines = consoleContainer.querySelectorAll('.console-line');
-      const activeLine = currentLines[currentLines.length - 1];
-      
-      activeLine.textContent = currentLineText.substring(0, currentCharIndex + 1);
-      
-      currentCharIndex++;
-      
-      if (currentCharIndex >= currentLineText.length) {
-        currentLineIndex++;
-        currentCharIndex = 0;
-        setTimeout(typeNextChar, 350); // Pause between lines
-      } else {
-        setTimeout(typeNextChar, 25); // Speed of typing characters
-      }
-    } else {
-      // Finished typing, append a blinking cursor
-      const cursorSpan = document.createElement('span');
-      cursorSpan.className = 'terminal-cursor';
-      consoleContainer.appendChild(cursorSpan);
-    }
-  }
-
-  // Start typing when page loads
-  document.addEventListener('DOMContentLoaded', () => {
-    typeNextChar();
-  });
-  
-  // Backup if DOMContentLoaded already fired
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    typeNextChar();
-  }
-</script>
 
 <style>
   .hero-section {
@@ -293,71 +226,52 @@ import logoImg from '../assets/images/Logo-OG.png';
     text-transform: uppercase;
   }
 
-  /* System Console Screen inside Bezel */
-  .system-console {
-    width: 100%;
-    max-width: 580px;
-    background: #06040b;
-    border: 2px solid #231c3c;
-    border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.8);
-    overflow: hidden;
+  /* Retro Arcade Start Prompt */
+  .arcade-start-prompt {
+    margin: 40px 0;
+    font-family: var(--font-arcade);
+    font-size: 1.3rem;
+    color: var(--neon-yellow);
+    text-shadow: 
+      0 0 5px var(--neon-yellow-glow),
+      0 0 12px var(--neon-yellow);
+    letter-spacing: 2px;
+    text-align: center;
+    text-transform: uppercase;
   }
 
-  .console-header {
-    background: #141026;
-    padding: 8px 12px;
-    display: flex;
+  .arcade-start-prompt .blink-text {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    border-bottom: 2px solid #231c3c;
+    justify-content: center;
+    gap: 15px;
+    animation: text-blink 1s steps(2, start) infinite;
   }
 
-  .console-header .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-
-  .console-header .dot.red { background-color: #ff5f56; }
-  .console-header .dot.yellow { background-color: #ffbd2e; }
-  .console-header .dot.green { background-color: #27c93f; }
-
-  .console-header .terminal-title {
-    font-size: 0.7rem;
-    color: var(--color-text-muted);
-    font-family: var(--font-body);
-    margin-left: 5px;
-  }
-
-  .console-body {
-    padding: 16px;
-    font-family: var(--font-terminal);
-    font-size: 1.15rem;
-    color: var(--neon-cyan);
-    min-height: 180px;
-    line-height: 1.4;
-    text-shadow: 0 0 5px var(--neon-cyan-glow);
-  }
-
-  .console-line {
-    margin-bottom: 8px;
-  }
-
-  .console-line.final-line {
-    color: var(--neon-green);
-    text-shadow: 0 0 5px var(--neon-green-glow);
-  }
-
-  .terminal-cursor {
+  .arcade-start-prompt .star-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: var(--neon-yellow);
+    filter: drop-shadow(0 0 5px var(--neon-yellow-glow)) drop-shadow(0 0 2px var(--neon-yellow));
     display: inline-block;
-    width: 8px;
+  }
+
+  @keyframes text-blink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+
+  .cta-actions .button-icon {
+    width: 16px;
     height: 16px;
-    background-color: var(--neon-green);
-    box-shadow: 0 0 5px var(--neon-green-glow);
-    margin-left: 4px;
-    animation: cursor-blink 1s steps(2, start) infinite;
+    margin-right: 10px;
+    display: inline-block;
     vertical-align: middle;
+    transition: transform 0.2s ease;
+  }
+
+  .cta-actions .pixel-button:hover .button-icon {
+    transform: scale(1.1);
   }
 
   /* Buttons and Joystick Control Bezel */
@@ -483,9 +397,15 @@ import logoImg from '../assets/images/Logo-OG.png';
       height: 90px;
     }
 
-    .console-body {
-      min-height: 200px;
-      font-size: 0.95rem;
+    .arcade-start-prompt {
+      font-size: 0.85rem;
+      margin: 25px 0;
+      letter-spacing: 1px;
+    }
+
+    .arcade-start-prompt .star-icon {
+      width: 0.75rem;
+      height: 0.75rem;
     }
 
     .cta-actions {
