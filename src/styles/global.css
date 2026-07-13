@@ -59,6 +59,53 @@ body {
   background-position: center top;
 }
 
+/* Retro Pixel Cursors — applied globally */
+* {
+  cursor: url('/cursors/cursor-default.svg') 0 0, auto;
+}
+
+a,
+button,
+[role="button"],
+.pixel-button,
+label[for],
+select,
+summary,
+[onclick],
+[data-ip],
+.clickable-ip,
+.copy-pass-btn,
+.copy-hint,
+.copy-ip-btn,
+.download-opt-link:not(.blocked),
+.modal-close-btn,
+.close-modal-footer-btn,
+.floating-crt-control *,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="checkbox"],
+input[type="radio"] {
+  cursor: url('/cursors/cursor-pointer.svg') 10 0, pointer !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+input[type="tel"],
+input[type="number"],
+textarea,
+[contenteditable="true"] {
+  cursor: url('/cursors/cursor-text.svg') 14 14, text !important;
+}
+
+/* Text selection cursor — when dragging to highlight text */
+p, span, h1, h2, h3, h4, h5, h6, li, td, th, label, .server-desc, .feature-item, .terminal-font, .section-desc, div {
+  cursor: url('/cursors/cursor-default.svg') 0 0, auto;
+}
+
 /* Scanline / CRT Container Overlay Style */
 .crt-active {
   animation: crt-flicker 0.15s infinite;
@@ -185,7 +232,7 @@ body {
   font-family: var(--font-arcade);
   font-size: 0.8rem;
   padding: 10px 20px;
-  cursor: pointer;
+  cursor: url('/cursors/cursor-pointer.svg') 10 0, pointer;
   position: relative;
   text-decoration: none;
   display: inline-flex;
