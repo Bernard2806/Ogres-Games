@@ -3,6 +3,7 @@
 import serversData from '../data/servers.json';
 import pokemonLogo from '../assets/images/sv-pokemon.png';
 import counterLogo from '../assets/images/sv-counter.png';
+import bedrockLogo from '../assets/images/sv-bedrock.png';
 import driveIcon from '../assets/images/icons-file-providers/drive.webp';
 import mediafireIcon from '../assets/images/icons-file-providers/mediafire.png';
 import megaIcon from '../assets/images/icons-file-providers/mega.png';
@@ -10,7 +11,8 @@ import workuploadIcon from '../assets/images/icons-file-providers/workupload.png
 
 const logoMap = {
   minecraft_cobbleverse: pokemonLogo,
-  cs_16: counterLogo
+  cs_16: counterLogo,
+  minecraft_bedrock: bedrockLogo
 };
 ---
 
@@ -72,8 +74,8 @@ const logoMap = {
                   <span class="value" id={`players-${server.id}`}>{server.players.online} / {server.players.max}</span>
                 </div>
                 <div class="meta-item-full">
-                  <span class="label">DIRECCIÓN IP:</span>
-                  <span class="value highlight-ip clickable-ip" data-ip={server.ip} title="Click para copiar IP">
+                  <span class="label">{(server as any).realmUrl ? 'CÓDIGO DE INVITACIÓN:' : 'DIRECCIÓN IP:'}</span>
+                  <span class="value highlight-ip clickable-ip" data-ip={server.ip} data-is-realm={(server as any).realmUrl ? 'true' : 'false'} title={(server as any).realmUrl ? 'Click para copiar Código' : 'Click para copiar IP'}>
                     {server.ip}
                     <span class="copy-hint arcade-font">[COPIAR]</span>
                   </span>
@@ -94,6 +96,14 @@ const logoMap = {
                   <button class="pixel-button pixel-button-green" id="open-modpack-modal-btn">
                     📦 DESCARGAR MODPACK
                   </button>
+                </div>
+              )}
+
+              {server.id === 'minecraft_bedrock' && (
+                <div class="server-actions">
+                  <a href={(server as any).realmUrl} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-green">
+                    🎮 UNIRSE AL REALM
+                  </a>
                 </div>
               )}
             </div>
@@ -182,9 +192,10 @@ const logoMap = {
   const clickableIps = document.querySelectorAll('.clickable-ip');
   const toast = document.getElementById('clipboard-toast');
 
-  function copyIpToClipboard(ipText: string) {
+  function copyIpToClipboard(ipText: string, isRealm: boolean = false) {
     navigator.clipboard.writeText(ipText).then(() => {
       if (toast) {
+        toast.textContent = isRealm ? '¡CÓDIGO COPIADO AL PORTAPAPELES!' : '¡IP COPIADA AL PORTAPAPELES!';
         toast.classList.add('show');
         setTimeout(() => {
           toast.classList.remove('show');
@@ -198,14 +209,16 @@ const logoMap = {
   copyButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const ip = btn.getAttribute('data-ip');
-      if (ip) copyIpToClipboard(ip);
+      const isRealm = btn.getAttribute('data-is-realm') === 'true';
+      if (ip) copyIpToClipboard(ip, isRealm);
     });
   });
 
   clickableIps.forEach(ipSpan => {
     ipSpan.addEventListener('click', () => {
       const ip = ipSpan.getAttribute('data-ip');
-      if (ip) copyIpToClipboard(ip);
+      const isRealm = ipSpan.getAttribute('data-is-realm') === 'true';
+      if (ip) copyIpToClipboard(ip, isRealm);
     });
   });
 

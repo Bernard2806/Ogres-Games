@@ -38,5 +38,26 @@
       "Estadísticas y Clasificaciones"
     ],
     "discordUrl": "https://discord.gg/ogresgames"
+  },
+  {
+    "id": "minecraft_bedrock",
+    "name": "Ogres Bedrock Realm",
+    "game": "Minecraft Bedrock",
+    "ip": "xwJeBqrizzsqu8w",
+    "realmUrl": "https://realms.gg/xwJeBqrizzsqu8w",
+    "status": "ONLINE",
+    "version": "Última Versión",
+    "players": {
+      "online": 0,
+      "max": 10
+    },
+    "description": "Nuestra aventura de supervivencia oficial en Minecraft Bedrock. Únete fácilmente desde cualquier plataforma (Consola, Celular, PC) usando nuestro enlace de Realm.",
+    "features": [
+      "Supervivencia Vanillish",
+      "Multiplataforma Activa",
+      "Comunidad Amigable",
+      "Soporte Bedrock Oficial"
+    ],
+    "discordUrl": "https://discord.gg/ogresgames"
   }
 ]
